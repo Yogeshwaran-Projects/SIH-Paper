@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // For navigation
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,25 +21,62 @@ import {
 
 export function TabsDemo() {
   const [activeTab, setActiveTab] = useState("wos");
+  const [wosEmail, setWosEmail] = useState("");
+  const [wosProfileLink, setWosProfileLink] = useState("");
+  const [googleScholarEmail, setGoogleScholarEmail] = useState("");
+  const [googleScholarProfileLink, setGoogleScholarProfileLink] = useState("");
+  const router = useRouter();
 
+  // Handle Save Changes for WOS tab (Switch to Scholar tab)
   const handleSaveChanges = () => {
     setActiveTab("scholar");
   };
 
-  const handleSubmit = () => {
-    alert("Submitted!");
-    // Add your submit logic here
+  // Handle form submission for Scholar tab
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("http://localhost:5003/api/saveUserData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          wosEmail,
+          wosProfileLink,
+          googleScholarEmail,
+          googleScholarProfileLink
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        alert("Submitted!");
+        // Redirect to user page displaying userId
+        router.push(`/profile/${result.userId}`); // Redirect to the new user ID page
+      } else {
+        alert("Failed to save user data");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("An error occurred while submitting the form");
+    }
   };
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-[500px] md:w-[600px]">
+      <Tabs
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="w-[500px] md:w-[600px]"
+      >
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="wos">WOS</TabsTrigger>
           <TabsTrigger value="scholar">Google Scholar</TabsTrigger>
         </TabsList>
+
+        {/* WOS Tab Content */}
         <TabsContent value="wos">
-          <Card style={{ backgroundColor: 'var(--background-color)', color: 'var(--text-color)' }}>
+          <Card>
             <CardHeader>
               <CardTitle>WOS Account</CardTitle>
               <CardDescription>
@@ -51,30 +89,33 @@ export function TabsDemo() {
                 <Input
                   id="wos-email"
                   type="email"
-                  style={{ backgroundColor: 'var(--input-bg-color)', color: 'var(--text-color)' }}
+                  value={wosEmail}
+                  onChange={(e) => setWosEmail(e.target.value)}
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="wos-id">Profile Link</Label>
                 <Input
                   id="wos-id"
-                  style={{ backgroundColor: 'var(--input-bg-color)', color: 'var(--text-color)' }}
+                  value={wosProfileLink}
+                  onChange={(e) => setWosProfileLink(e.target.value)}
                 />
               </div>
             </CardContent>
             <CardFooter>
-              <Button onClick={handleSaveChanges} style={{ backgroundColor: 'var(--primary-color)', color: 'var(--text-color)' }}>
-                Save changes
-              </Button>
+              <Button onClick={handleSaveChanges}>Save changes</Button>
             </CardFooter>
           </Card>
         </TabsContent>
+
+        {/* Scholar Tab Content */}
         <TabsContent value="scholar">
-          <Card style={{ backgroundColor: 'var(--background-color)', color: 'var(--text-color)' }}>
+          <Card>
             <CardHeader>
               <CardTitle>Google Scholar Account</CardTitle>
               <CardDescription>
-                Enter your Google Scholar email and ID. Click submit when you're done.
+                Enter your Google Scholar email and ID. Click submit when
+                you're done.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -83,21 +124,21 @@ export function TabsDemo() {
                 <Input
                   id="scholar-email"
                   type="email"
-                  style={{ backgroundColor: 'var(--input-bg-color)', color: 'var(--text-color)' }}
+                  value={googleScholarEmail}
+                  onChange={(e) => setGoogleScholarEmail(e.target.value)}
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="scholar-id">Profile Link</Label>
                 <Input
                   id="scholar-id"
-                  style={{ backgroundColor: 'var(--input-bg-color)', color: 'var(--text-color)' }}
+                  value={googleScholarProfileLink}
+                  onChange={(e) => setGoogleScholarProfileLink(e.target.value)}
                 />
               </div>
             </CardContent>
             <CardFooter>
-              <Button onClick={handleSubmit} style={{ backgroundColor: 'var(--primary-color)', color: 'var(--text-color)' }}>
-                Submit
-              </Button>
+              <Button onClick={handleSubmit}>Submit</Button>
             </CardFooter>
           </Card>
         </TabsContent>
