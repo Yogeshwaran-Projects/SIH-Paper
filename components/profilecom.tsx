@@ -31,7 +31,7 @@ import { useRouter } from "next/navigation";
 export function Profilecom() {
   const params = useParams(); // Access the params using useParams
   const userId = params.userId;
-  const username = "John Doe"; // Replace with actual username
+  const username = "SIH TEAM"; // Replace with actual username
 
   const router = useRouter ();
   function handleSearch(){
