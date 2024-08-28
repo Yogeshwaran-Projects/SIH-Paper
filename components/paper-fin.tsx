@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useEffect,useState } from "react"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import {
   DropdownMenu,
@@ -14,21 +14,59 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { DatePickerWithRange } from "./ui/date-picker-with-range"
+import ExcelWos from '../Export/ExcelWos';
+import WordWos from '../Export/WordWos';
 
 export function PaperFin() {
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [sortBy, setSortBy] = useState("date")
   const [startYear, setStartYear] = useState<number | undefined>(undefined)
   const [endYear, setEndYear] = useState<number | undefined>(undefined)
   const [yearDropdownOpen, setYearDropdownOpen] = useState(false)
   const currentYear = new Date().getFullYear()
 
+  useEffect(() => {
+    fetch('http://localhost:5003/api/v1/webofscience')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            setData(data);
+            setFilteredData(data);
+        })
+        .catch(error=>console.log(error));
+}, []);
+
   // Generate a list of years for the dropdown
   const years = Array.from({ length: currentYear - 2000 + 1 }, (_, i) => 2000 + i)
 
   const handleYearRangeDone = () => {
     setYearDropdownOpen(false)
-    console.log(`Sorting from ${startYear} to ${endYear}`)
+    applyFilterAndSort("latest", startYear, endYear);
+    // console.log(`Sorting from ${startYear} to ${endYear}`)
   }
+
+  const applyFilterAndSort = (sortOrder, startYear, endYear) => {
+    const filtered = data.filter(item => {
+      const publicationYear = item.source.publishYear;
+      const start = startYear ? parseInt(startYear, 10) : -Infinity;
+      const end = endYear ? parseInt(endYear, 10) : Infinity;
+      return publicationYear >= start && publicationYear <= end;
+    });
+
+    const sorted = filtered.sort((a, b) => {
+      const dateA = new Date(`${a.source.publishYear}-${a.source.publishMonth}-01`);
+      const dateB = new Date(`${b.source.publishYear}-${b.source.publishMonth}-01`);
+      return sortOrder === "latest" ? dateB - dateA : dateA - dateB;
+    });
+
+    setFilteredData(sorted);
+    console.log(sorted);
+  };
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-12">
@@ -60,9 +98,6 @@ export function PaperFin() {
                     value={sortBy}
                     onValueChange={(value) => {
                       setSortBy(value)
-                      if (value === "date") {
-                        setYearDropdownOpen(false)
-                      }
                     }}
                   >
                     <DropdownMenuRadioItem value="date">Date</DropdownMenuRadioItem>
@@ -132,7 +167,7 @@ export function PaperFin() {
                       prefetch={false}
                     >
                       <FileSpreadsheetIcon className="h-6 w-6" />
-                      <span>Export as Excel</span>
+                      <ExcelWos data={filteredData} filename="web_of_science_data" />
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
@@ -142,7 +177,7 @@ export function PaperFin() {
                       prefetch={false}
                     >
                       <FileIcon className="h-6 w-6" />
-                      <span>Export as Word</span>
+                      <WordWos publications={filteredData}/>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
@@ -160,89 +195,34 @@ export function PaperFin() {
             </div>
           </div>
           <div className="grid gap-8">
-            <Card className="p-6">
-              <CardContent>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-semibold">
-                    Optimizing React Performance
-                  </h3>
-                </div>
-                <p className="text-muted-foreground text-lg">
-                  This paper explores various techniques for optimizing the
-                  performance of React applications, including code splitting,
-                  memoization, and lazy loading.
-                </p>
-                <div className="text-sm text-muted-foreground mt-4">
-                  Published in 2021
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="p-6">
-              <CardContent>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-semibold">
-                    Optimizing React Performance
-                  </h3>
-                </div>
-                <p className="text-muted-foreground text-lg">
-                  This paper explores various techniques for optimizing the
-                  performance of React applications, including code splitting,
-                  memoization, and lazy loading.
-                </p>
-                <div className="text-sm text-muted-foreground mt-4">
-                  Published in 2021
-                </div>
-              </CardContent>
-            </Card><Card className="p-6">
-              <CardContent>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-semibold">
-                    Optimizing React Performance
-                  </h3>
-                </div>
-                <p className="text-muted-foreground text-lg">
-                  This paper explores various techniques for optimizing the
-                  performance of React applications, including code splitting,
-                  memoization, and lazy loading.
-                </p>
-                <div className="text-sm text-muted-foreground mt-4">
-                  Published in 2021
-                </div>
-              </CardContent>
-            </Card><Card className="p-6">
-              <CardContent>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-semibold">
-                    Optimizing React Performance
-                  </h3>
-                </div>
-                <p className="text-muted-foreground text-lg">
-                  This paper explores various techniques for optimizing the
-                  performance of React applications, including code splitting,
-                  memoization, and lazy loading.
-                </p>
-                <div className="text-sm text-muted-foreground mt-4">
-                  Published in 2021
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="p-6">
-              <CardContent>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-semibold">
-                    Serverless Architecture with AWS
-                  </h3>
-                </div>
-                <p className="text-muted-foreground text-lg">
-                  This paper discusses the benefits and challenges of
-                  implementing a serverless architecture using AWS services such
-                  as Lambda, API Gateway, and DynamoDB.
-                </p>
-                <div className="text-sm text-muted-foreground mt-4">
-                  Published in 2020
-                </div>
-              </CardContent>
-            </Card>
+          {filteredData.map((item, index) => (
+                    <Card key={index} className="p-6 shadow-lg">
+                        <CardContent>
+                            <div className="flex items-center justify-between mb-4">
+                                <h3 className="text-xl font-semibold">{item.title}</h3>
+                            </div>
+                            <p className="text-muted-foreground text-lg">
+                                Published in {item.source.sourceTitle}, {item.source.publishYear}
+                            </p>
+                            <p className="text-muted-foreground text-lg">
+                                Volume: {item.source.volume}, Pages: {item.source.pages.range}
+                            </p>
+                            <div className="text-sm text-muted-foreground mt-4">
+                                Authors: {item.names.authors.map(author => author.displayName).join(', ')}
+                            </div>
+                            <div className="text-sm text-muted-foreground mt-4">
+                                DOI: <a href={`https://doi.org/${item.identifiers.doi}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                                    {item.identifiers.doi}
+                                </a>
+                            </div>
+                            <div className="text-sm text-muted-foreground mt-4">
+                                <a href={item.links.record} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                                    View Full Record
+                                </a>
+                            </div>
+                        </CardContent>
+                    </Card>
+                ))}
             {/* Repeat for other cards */}
           </div>
         </div>

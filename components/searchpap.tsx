@@ -1,4 +1,3 @@
-
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -27,13 +26,10 @@ export function Searchpap() {
   />
   
   <Button
-    type="submit"
+    type="button"
     variant="ghost"
     className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-white hover:bg-primary-foreground/20 focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
-    
   >
-    
-    
     <div className="flex items-center gap-10"> 
       <SearchIcon className="h-5 w-5 text-white" />
       <FileUpload />

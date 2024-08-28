@@ -1,0 +1,806 @@
+[
+  {
+    "uid": "WOS:000336668000076",
+    "title": "Determination of mechanical properties of intra-layer abaca-jute-glass fiber reinforced composite",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "MATERIALS & DESIGN",
+      "publishYear": 2014,
+      "publishMonth": "AUG",
+      "volume": "60",
+      "pages": {
+        "range": "643-652",
+        "begin": "643",
+        "end": "652",
+        "count": 10
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Ramnath, B. Vijaya",
+          "wosStandard": "Ramnath, BV",
+          "researcherId": "AAY-7889-2021"
+        },
+        {
+          "displayName": "Manickavasagam, V. M.",
+          "wosStandard": "Manickavasagam, VM",
+          "researcherId": "AAY-7505-2021"
+        },
+        {
+          "displayName": "Elanchezhian, C.",
+          "wosStandard": "Elanchezhian, C",
+          "researcherId": "JCO-1647-2023"
+        },
+        {
+          "displayName": "Krishna, C. Vinodh",
+          "wosStandard": "Krishna, CV",
+          "researcherId": "DAC-9118-2022"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "AAZ-2628-2021"
+        },
+        {
+          "displayName": "Saravanan, K.",
+          "wosStandard": "Saravanan, K",
+          "researcherId": "AIC-6914-2022"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000336668000076&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000336668000076&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000336668000076&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1016/j.matdes.2014.03.061",
+      "issn": "0264-1275",
+      "eissn": "1873-4197"
+    },
+    "keywords": {
+      "authorKeywords": []
+    }
+  },
+  {
+    "uid": "WOS:000520449800001",
+    "title": "Investigation on the tensile and flexural behavior of coconut inflorescence fiber reinforced unsaturated polyester resin composites",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "MATERIALS RESEARCH EXPRESS",
+      "publishYear": 2020,
+      "publishMonth": "JAN",
+      "volume": "7",
+      "issue": "1",
+      "articleNumber": "015345",
+      "pages": {
+        "count": 11
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "HHC-4483-2022"
+        },
+        {
+          "displayName": "Arunachalam, V. P.",
+          "wosStandard": "Arunachalam, VP",
+          "researcherId": "AAH-5075-2020"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000520449800001&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000520449800001&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000520449800001&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1088/2053-1591/ab6c9d",
+      "eissn": "2053-1591"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "coconut inflorescence",
+        "unsaturated polyester resin",
+        "Retting",
+        "mercerization",
+        "FTIR",
+        "XRD",
+        "mechanical properties"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:000739580800001",
+    "title": "Quasi-static compression behavior and microstructure changes in low-cost AA6061 composites",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART C-JOURNAL OF MECHANICAL ENGINEERING SCIENCE",
+      "publishYear": 2022,
+      "publishMonth": "MAY",
+      "volume": "236",
+      "issue": "9",
+      "articleNumber": "09544062211055339",
+      "pages": {
+        "range": "4876-4884",
+        "begin": "4876",
+        "end": "4884",
+        "count": 9
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Hariharasakthisudhan, P.",
+          "wosStandard": "Hariharasakthisudhan, P",
+          "researcherId": "ABC-2783-2022"
+        },
+        {
+          "displayName": "Hariharasudhan, T.",
+          "wosStandard": "Hariharasudhan, T",
+          "researcherId": "IYA-1890-2023"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "HHC-4483-2022"
+        },
+        {
+          "displayName": "Sathickbasha, K.",
+          "wosStandard": "Sathickbasha, K",
+          "researcherId": "AAC-7296-2019"
+        },
+        {
+          "displayName": "Rajan, Surya B.",
+          "wosStandard": "Rajan, BS",
+          "researcherId": "FTH-8606-2022"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000739580800001&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000739580800001&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000739580800001&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1177/09544062211055339",
+      "issn": "0954-4062",
+      "eissn": "2041-2983"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "low-cost composite",
+        "workability",
+        "quasi-static compression",
+        "microstructure"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:000741962800001",
+    "title": "EVALUATION OF MICROSTRUCTURES, MECHANICAL AND DRY-SLIDING WEAR PERFORMANCE OF A356-(FLY ASH/SICP) HYBRID COMPOSITES",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "INTERNATIONAL JOURNAL OF METALCASTING",
+      "publishYear": 2022,
+      "publishMonth": "OCT",
+      "volume": "16",
+      "issue": "4",
+      "pages": {
+        "range": "2079-2096",
+        "begin": "2079",
+        "end": "2096",
+        "count": 18
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Soundararajan, R.",
+          "wosStandard": "Soundararajan, R",
+          "researcherId": "J-8127-2019"
+        },
+        {
+          "displayName": "Sathishkumar, A.",
+          "wosStandard": "Sathishkumar, A",
+          "researcherId": "AAQ-7593-2021"
+        },
+        {
+          "displayName": "Shanthosh, G.",
+          "wosStandard": "Shanthosh, G",
+          "researcherId": "DSR-6641-2022"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "AAZ-2628-2021"
+        },
+        {
+          "displayName": "Sivasankaran, S.",
+          "wosStandard": "Sivasankaran, S",
+          "researcherId": "N-5857-2016"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000741962800001&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000741962800001&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000741962800001&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1007/s40962-021-00731-3",
+      "issn": "1939-5981",
+      "eissn": "2163-3193"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "hybrid composites",
+        "stir cum squeezed",
+        "physical",
+        "metallurgical",
+        "mechanical",
+        "tribological behavior"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:000813937400004",
+    "title": "UNRAVELLING THE TRIBOLOGICAL BEHAVIOUR OF MERCERIZED COCONUT INFLORESCENCE FIBER FORTIFIED UNSATURATED POLYESTER COMPOSITES",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "MATERIALI IN TEHNOLOGIJE",
+      "publishYear": 2022,
+      "volume": "56",
+      "issue": "3",
+      "pages": {
+        "range": "271-277",
+        "begin": "271",
+        "end": "277",
+        "count": 7
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Soundarrajan, Karthik",
+          "wosStandard": "Soundarrajan, K",
+          "researcherId": "AAZ-2628-2021"
+        },
+        {
+          "displayName": "Kaushik, Nitish",
+          "wosStandard": "Kaushik, N",
+          "researcherId": "IVH-9394-2023"
+        },
+        {
+          "displayName": "Shanthi, C.",
+          "wosStandard": "Shanthi, C",
+          "researcherId": "DXW-5330-2022"
+        },
+        {
+          "displayName": "Sekaran, Joshua Gnana",
+          "wosStandard": "Sekaran, JG",
+          "researcherId": "DQS-8121-2022"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000813937400004&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000813937400004&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000813937400004&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.17222/mit.2022.410",
+      "issn": "1580-2949",
+      "eissn": "1580-3414"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "coconut inflorescence fibre",
+        "unsaturated polyester resin",
+        "mercerization",
+        "wear",
+        "friction coefficient",
+        "SEM analysis"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:000821331300001",
+    "title": "Soil monitoring and evaluation system using EDL-ASQE: enhanced deep learning model for IoT smart agriculture network (Retraction of Vol 34, art no E4859, 2021)",
+    "types": [
+      "Retraction"
+    ],
+    "sourceTypes": [
+      "Retraction"
+    ],
+    "source": {
+      "sourceTitle": "INTERNATIONAL JOURNAL OF COMMUNICATION SYSTEMS",
+      "publishYear": 2022,
+      "publishMonth": "SEP 10",
+      "volume": "35",
+      "issue": "13",
+      "articleNumber": "e5277",
+      "pages": {
+        "count": 1
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Sumathi, P.",
+          "wosStandard": "Sumathi, P",
+          "researcherId": "DZY-1266-2022"
+        },
+        {
+          "displayName": "Subramanian, R.",
+          "wosStandard": "Subramanian, R",
+          "researcherId": "HPD-2539-2023"
+        },
+        {
+          "displayName": "Karthikeyan, V. V.",
+          "wosStandard": "Karthikeyan, VV",
+          "researcherId": "IYQ-8822-2023"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "HHC-4483-2022"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000821331300001&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000821331300001&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000821331300001&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1002/dac.5277",
+      "issn": "1074-5351",
+      "eissn": "1099-1131"
+    },
+    "keywords": {
+      "authorKeywords": []
+    }
+  },
+  {
+    "uid": "WOS:000915377600005",
+    "title": "MECHANICAL BEHAVIOUR OF INFLORESCENCE/GLASS-FIBRE-REINFORCED HYBRID EPOXY COMPOSITES",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "MATERIALI IN TEHNOLOGIJE",
+      "publishYear": 2022,
+      "volume": "56",
+      "issue": "6",
+      "pages": {
+        "range": "637-643",
+        "begin": "637",
+        "end": "643",
+        "count": 7
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Anban, Athithanambi Anna",
+          "wosStandard": "Anban, AA",
+          "researcherId": "HLZ-2851-2023"
+        },
+        {
+          "displayName": "Krishnaswamy, Manonmani",
+          "wosStandard": "Krishnaswamy, M",
+          "researcherId": "GVY-4879-2022"
+        },
+        {
+          "displayName": "Appasamy, Rajesh",
+          "wosStandard": "Appasamy, R",
+          "researcherId": "AED-7390-2022"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000915377600005&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000915377600005&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000915377600005&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.17222/mit.2022.588",
+      "issn": "1580-2949",
+      "eissn": "1580-3414"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "inflorescence fibres",
+        "hybridization",
+        "X-ray diffraction",
+        "Fourier-transform infrared",
+        "scanning electron microscope"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:000971777200001",
+    "title": "Analysis on the impact of recycled ceramic waste, fiber format, and manufacturing techniques on polymer composite properties",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "ENGINEERING RESEARCH EXPRESS",
+      "publishYear": 2022,
+      "publishMonth": "DEC 1",
+      "volume": "4",
+      "issue": "4",
+      "articleNumber": "045006",
+      "pages": {
+        "count": 19
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Balan, G. Sakthi",
+          "wosStandard": "Balan, GS",
+          "researcherId": "GCF-8491-2022"
+        },
+        {
+          "displayName": "Prakash, B.",
+          "wosStandard": "Prakash, B",
+          "researcherId": "JPU-3544-2023"
+        },
+        {
+          "displayName": "Raj, S. Aravind",
+          "wosStandard": "Raj, SA",
+          "researcherId": "GDM-4041-2022"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "HHC-4483-2022"
+        },
+        {
+          "displayName": "Kumar, V. Mohan",
+          "wosStandard": "Kumar, VM",
+          "researcherId": "FGV-2590-2022"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000971777200001&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000971777200001&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000971777200001&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1088/2631-8695/ac9aa0",
+      "issn": "2631-8695"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "S-glass fiber mat",
+        "waste tile powder",
+        "epoxy resin",
+        "glass fiber mesh",
+        "shore D hardness",
+        "water intake"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:000981937900171",
+    "title": "A 1-18 GHz Single Supply 5-Bit Low Power Consumption MMIC Digital Attenuator",
+    "types": [
+      "Meeting"
+    ],
+    "sourceTypes": [
+      "Proceedings Paper"
+    ],
+    "source": {
+      "sourceTitle": "2022 IEEE MICROWAVES, ANTENNAS, AND PROPAGATION CONFERENCE, MAPCON",
+      "publishYear": 2022,
+      "pages": {
+        "range": "823-826",
+        "begin": "823",
+        "end": "826",
+        "count": 4
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Sari, S.",
+          "wosStandard": "Sari, S",
+          "researcherId": "IOG-0472-2023"
+        },
+        {
+          "displayName": "TulasiSivakumar",
+          "wosStandard": "TulasiSivakumar",
+          "researcherId": "IWO-2030-2023"
+        },
+        {
+          "displayName": "Nagaveni, H.",
+          "wosStandard": "Nagaveni, H",
+          "researcherId": "INH-1456-2023"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "HHC-4483-2022"
+        }
+      ],
+      "bookCorp": [
+        {
+          "displayName": "IEEE"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000981937900171&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000981937900171&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:000981937900171&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1109/MAPCON56011.2022.10047211",
+      "eisbn": "978-1-6654-5203-8"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "MMIC",
+        "wideband",
+        "single supply",
+        "digital attenuator",
+        "low power consumption"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:001106084600001",
+    "title": "Weed detection in agricultural fields via automatic graph cut segmentation with Mobile Net classification model",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "SIGNAL IMAGE AND VIDEO PROCESSING",
+      "publishYear": 2024,
+      "publishMonth": "MAR",
+      "volume": "18",
+      "issue": "2",
+      "pages": {
+        "range": "1549-1560",
+        "begin": "1549",
+        "end": "1560",
+        "count": 12
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Samuel, S. Prince",
+          "wosStandard": "Samuel, SP",
+          "researcherId": "JSJ-7969-2023"
+        },
+        {
+          "displayName": "Malarvizhi, K.",
+          "wosStandard": "Malarvizhi, K",
+          "researcherId": "FKJ-0576-2022"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "HHC-4483-2022"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001106084600001&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001106084600001&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001106084600001&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1007/s11760-023-02863-x",
+      "issn": "1863-1703",
+      "eissn": "1863-1711"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "Agricultural fields",
+        "Weed detection",
+        "Deep learning",
+        "Mobile Net",
+        "Graph cut",
+        "Segmentation",
+        "Classification",
+        "Extreme Learning Machine"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:001062022900002",
+    "title": "Bio-Inspired ensemble feature selection and deep auto-encoder approach for rapid diagnosis of breast cancer",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "MULTIMEDIA SYSTEMS",
+      "publishYear": 2023,
+      "publishMonth": "DEC",
+      "volume": "29",
+      "issue": "6",
+      "pages": {
+        "range": "3403-3419",
+        "begin": "3403",
+        "end": "3419",
+        "count": 17
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Praveena, V.",
+          "wosStandard": "Praveena, V",
+          "researcherId": "DWR-3895-2022"
+        },
+        {
+          "displayName": "Sujithra, L. R.",
+          "wosStandard": "Sujithra, LR",
+          "researcherId": "JFI-9113-2023"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "HHC-4483-2022"
+        },
+        {
+          "displayName": "Kavitha, M. S.",
+          "wosStandard": "Kavitha, MS",
+          "researcherId": "AAA-1557-2019"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001062022900002&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001062022900002&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001062022900002&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1007/s00530-023-01168-w",
+      "issn": "0942-4962",
+      "eissn": "1432-1882"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "Deep learning",
+        "Breast cancer",
+        "Single nucleotide polymorphism",
+        "Ensemble feature selection",
+        "Classification"
+      ]
+    }
+  },
+  {
+    "uid": "WOS:001167265100001",
+    "title": "Mycelium-infused geopolymer bricks for non-load-bearing walls: experimental investigation and life cycle assessment",
+    "types": [
+      "Article"
+    ],
+    "sourceTypes": [
+      "Article"
+    ],
+    "source": {
+      "sourceTitle": "INNOVATIVE INFRASTRUCTURE SOLUTIONS",
+      "publishYear": 2024,
+      "publishMonth": "MAR",
+      "volume": "9",
+      "issue": "3",
+      "articleNumber": "72",
+      "pages": {
+        "count": 27
+      }
+    },
+    "names": {
+      "authors": [
+        {
+          "displayName": "Ardra, R.",
+          "wosStandard": "Ardra, R",
+          "researcherId": "GSF-0106-2022"
+        },
+        {
+          "displayName": "Karthik, S.",
+          "wosStandard": "Karthik, S",
+          "researcherId": "HHC-4483-2022"
+        },
+        {
+          "displayName": "Padmakumar, T. Gautham",
+          "wosStandard": "Padmakumar, TG",
+          "researcherId": "KED-3565-2024"
+        },
+        {
+          "displayName": "Kishnan, Rohith",
+          "wosStandard": "Kishnan, R",
+          "researcherId": "KDS-2021-2024"
+        },
+        {
+          "displayName": "Shukla, Sanjay Kumar",
+          "wosStandard": "Shukla, SK",
+          "researcherId": "IRX-0103-2023"
+        },
+        {
+          "displayName": "Sathyan, Dhanya",
+          "wosStandard": "Sathyan, D",
+          "researcherId": "GDS-1991-2022"
+        }
+      ]
+    },
+    "links": {
+      "record": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001167265100001&DestLinkType=FullRecord&DestApp=WOS_CPL",
+      "references": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001167265100001&DestLinkType=CitedReferences&DestApp=WOS",
+      "related": "https://www.webofscience.com/api/gateway?GWVersion=2&SrcApp=publication-summary-generator&SrcAuth=WosAPI&KeyUT=WOS:001167265100001&DestLinkType=RelatedRecords&DestApp=WOS_CPL"
+    },
+    "citations": [],
+    "identifiers": {
+      "doi": "10.1007/s41062-024-01379-8",
+      "issn": "2364-4176",
+      "eissn": "2364-4184"
+    },
+    "keywords": {
+      "authorKeywords": [
+        "Mycelium",
+        "Sustainable material",
+        "Non-load-bearing",
+        "Geopolymer",
+        "COMSOL multiphysics",
+        "Life cycle assessment"
+      ]
+    }
+  }
+]
