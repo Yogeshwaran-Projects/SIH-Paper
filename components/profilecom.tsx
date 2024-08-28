@@ -3,7 +3,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search,User } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -31,11 +31,16 @@ import { useRouter } from "next/navigation";
 export function Profilecom() {
   const params = useParams(); // Access the params using useParams
   const userId = params.userId;
-  const username = "SIH TEAM"; // Replace with actual username
+  const username = "SIH TEAM"; 
 
-  const router = useRouter ();
-  function handleSearch(){
+  const router = useRouter(); // Define `router` once
+
+  function handleSearch() {
     router.push(`/search`);
+  }
+
+  function handleProfile() { // Corrected the function name from `handleProfie` to `handleProfile`
+    router.push(`/Summary`);
   }
 
   return (
@@ -92,9 +97,12 @@ export function Profilecom() {
               </SheetFooter>
             </SheetContent>
           </Sheet>
-          <Button>
-            <Search onClick={handleSearch}/>
+          <Button variant="ghost">
+            <Search onClick={handleSearch} />
           </Button>
+          <Button variant="ghost">
+            <User onClick={handleProfile}/>
+            </Button>
         </div>
         
         <div className="space-y-6">

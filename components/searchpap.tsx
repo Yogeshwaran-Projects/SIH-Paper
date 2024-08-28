@@ -2,12 +2,15 @@
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import FileUpload from "@/components/FileUpload";
+
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationEllipsis, PaginationNext } from "@/components/ui/pagination"
 import { Globe } from "lucide-react";
 import { BookOpen } from "lucide-react";
 export function Searchpap() {
+  
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="py-4 px-6">
@@ -16,18 +19,28 @@ export function Searchpap() {
             SIH Papers
           </Link>
           <form className="relative w-full max-w-3xl">
+            <div>
   <Input
     type="search"
     placeholder="Search papers..."
     className="w-full rounded-md bg-primary-foreground/10 px-4 py-2 text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
   />
+  
   <Button
     type="submit"
     variant="ghost"
     className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-white hover:bg-primary-foreground/20 focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
+    
   >
-    <SearchIcon className="h-5 w-5 text-white" />
+    
+    
+    <div className="flex items-center gap-10"> 
+      <SearchIcon className="h-5 w-5 text-white" />
+      <FileUpload />
+    </div>
   </Button>
+  
+  </div>
 </form>
         </div>
       </header>
