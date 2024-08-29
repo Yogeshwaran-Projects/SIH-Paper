@@ -1,4 +1,6 @@
+"use client"
 import Link from "next/link"
+import { useEffect,useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import FileUpload from "@/components/FileUpload";
@@ -9,7 +11,37 @@ import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, Pagi
 import { Globe } from "lucide-react";
 import { BookOpen } from "lucide-react";
 export function Searchpap() {
-  
+  const [data, setData] = useState([]);
+  const [topic, setTopic] = useState("");
+
+  const handleTopicChange = (event) => {
+    setTopic(event.target.value);
+  };
+
+  const handlesearch= async ()=>{
+     console.log(topic);
+     fetch('http://localhost:5003/api/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query: topic }), // Ensure 'topic' is defined
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setData(data); // Assuming setData is a state setter function to store the data
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Fetch error:', error); // Handle fetch errors
+      });
+  };
+
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="py-4 px-6">
@@ -23,12 +55,15 @@ export function Searchpap() {
     type="search"
     placeholder="Search papers..."
     className="w-full rounded-md bg-primary-foreground/10 px-4 py-2 text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
+    value={topic}
+    onChange={handleTopicChange}
   />
   
   <Button
     type="button"
     variant="ghost"
     className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-white hover:bg-primary-foreground/20 focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
+    onClick={handlesearch}
   >
     <div className="flex items-center gap-10"> 
       <SearchIcon className="h-5 w-5 text-white" />
@@ -121,156 +156,36 @@ export function Searchpap() {
             </div>
           </div>
           <div className="grid gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  <Link href="#" className="text-lg font-medium text-foreground hover:underline" prefetch={false}>
-                    The Impact of Artificial Intelligence on the Future of Education
-                  </Link>
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  John Doe, Jane Smith, Michael Johnson
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  This paper explores the potential impact of artificial intelligence on the future of education,
-                  including personalized learning, automated grading, and intelligent tutoring systems. The authors
-                  discuss the opportunities and challenges presented by this emerging technology.
-                </p>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between">
-                <div className="text-muted-foreground">Published: January 15, 2023</div>
-                <div className="flex items-center gap-2">
-                  <TagIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">AI, Education</span>
-                </div>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  <Link href="#" className="text-lg font-medium text-foreground hover:underline" prefetch={false}>
-                    Sustainable Urban Planning: Strategies for Livable Cities
-                  </Link>
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">Emily Chen, David Lee, Sarah Kim</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  This paper examines the principles of sustainable urban planning and presents case studies of
-                  successful implementations around the world. The authors discuss strategies for creating livable,
-                  environmentally-friendly cities that improve the quality of life for residents.
-                </p>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between">
-                <div className="text-muted-foreground">Published: March 1, 2022</div>
-                <div className="flex items-center gap-2">
-                  <TagIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Urban Planning, Sustainability</span>
-                </div>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  <Link href="#" className="text-lg font-medium text-foreground hover:underline" prefetch={false}>
-                    The Role of Blockchain in Supply Chain Management
-                  </Link>
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  Michael Chen, Lisa Park, Robert Gonzalez
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  This paper investigates the potential applications of blockchain technology in supply chain
-                  management, including improved transparency, traceability, and efficiency. The authors discuss the
-                  challenges and opportunities of implementing blockchain-based solutions in various industries.
-                </p>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between">
-                <div className="text-muted-foreground">Published: September 20, 2021</div>
-                <div className="flex items-center gap-2">
-                  <TagIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Blockchain, Supply Chain</span>
-                </div>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  <Link href="#" className="text-lg font-medium text-foreground hover:underline" prefetch={false}>
-                    The Future of Remote Work: Challenges and Opportunities
-                  </Link>
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">Sarah Lee, David Kim, Michael Park</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  This paper explores the rise of remote work and its impact on the workforce, including the challenges
-                  of maintaining productivity, collaboration, and work-life balance. The authors discuss strategies for
-                  organizations to effectively manage and support remote teams.
-                </p>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between">
-                <div className="text-muted-foreground">Published: June 1, 2023</div>
-                <div className="flex items-center gap-2">
-                  <TagIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Remote Work, Productivity</span>
-                </div>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  <Link href="#" className="text-lg font-medium text-foreground hover:underline" prefetch={false}>
-                    The Impact of Social Media on Mental Health
-                  </Link>
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">Emily Nguyen, David Lee, Lisa Park</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  This paper examines the relationship between social media use and mental health, including the effects
-                  of social comparison, cyberbullying, and addiction. The authors discuss strategies for individuals and
-                  organizations to promote healthy social media habits.
-                </p>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between">
-                <div className="text-muted-foreground">Published: November 15, 2022</div>
-                <div className="flex items-center gap-2">
-                  <TagIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Social Media, Mental Health</span>
-                </div>
-              </CardFooter>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  <Link href="#" className="text-lg font-medium text-foreground hover:underline" prefetch={false}>
-                    The Future of Renewable Energy: Trends and Innovations
-                  </Link>
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  Michael Chen, Lisa Park, Robert Gonzalez
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  This paper explores the latest trends and innovations in renewable energy, including advancements in
-                  solar, wind, and energy storage technologies. The authors discuss the potential for renewable energy
-                  to replace fossil fuels and mitigate climate change.
-                </p>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between">
-                <div className="text-muted-foreground">Published: April 1, 2023</div>
-                <div className="flex items-center gap-2">
-                  <TagIcon className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Renewable Energy, Sustainability</span>
-                </div>
-              </CardFooter>
-            </Card>
+          {data.length>0?data.map(paper => (
+        <Card key={paper.uid}>
+          <CardHeader>
+            <CardTitle>
+              <Link href={paper.links.record} className="text-lg font-medium text-foreground hover:underline" prefetch={false}>
+                {paper.title}
+              </Link>
+            </CardTitle>
+            <CardDescription className="text-muted-foreground">
+              {paper.names.authors.map(author => author.displayName).join(', ')}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">
+              {`Published: ${paper.source.publishMonth} ${paper.source.publishYear}, Volume ${paper.source.volume}, Pages ${paper.source.pages.range}`}
+            </p>
+          </CardContent>
+          <CardFooter className="flex items-center justify-between">
+            <div className="text-muted-foreground">
+              DOI: {paper.identifiers.doi}
+            </div>
+            <div className="flex items-center gap-2">
+              <TagIcon className="h-4 w-4 text-muted-foreground" />
+              <span className="text-muted-foreground">
+                {paper.keywords.authorKeywords.length > 0 ? paper.keywords.authorKeywords.join(', ') : 'No keywords available'}
+              </span>
+            </div>
+          </CardFooter>
+        </Card>
+      )):<p>nothing</p>}
           </div>
           <div className="mt-8 flex justify-center">
             <Pagination>
