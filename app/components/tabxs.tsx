@@ -27,38 +27,46 @@ export function TabsDemo() {
   const [googleScholarProfileLink, setGoogleScholarProfileLink] = useState("");
   const router = useRouter();
 
-  // Handle Save Changes for WOS tab (Switch to Scholar tab)
+  // Handle Save Changes for WOS tab (Switch to Scholar tab if valid)
   const handleSaveChanges = () => {
-    setActiveTab("scholar");
+    if (wosEmail && wosProfileLink) {
+      setActiveTab("scholar");
+    } else {
+      alert("Please fill in all fields.");
+    }
   };
 
   // Handle form submission for Scholar tab
   const handleSubmit = async () => {
-    try {
-      const response = await fetch("http://localhost:5003/api/saveUserData", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          wosEmail,
-          wosProfileLink,
-          googleScholarEmail,
-          googleScholarProfileLink
-        }),
-      });
+    if (googleScholarEmail && googleScholarProfileLink) {
+      try {
+        const response = await fetch("http://localhost:5003/api/saveUserData", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            wosEmail,
+            wosProfileLink,
+            googleScholarEmail,
+            googleScholarProfileLink
+          }),
+        });
 
-      const result = await response.json();
-      if (result.success) {
-        alert("Submitted!");
-        // Redirect to user page displaying userId
-        router.push(`/profile/${result.userId}`); // Redirect to the new user ID page
-      } else {
-        alert("Failed to save user data");
+        const result = await response.json();
+        if (result.success) {
+          alert("Submitted!");
+          // Redirect to user page displaying userId
+          router.push(`/detail`); // Redirect to the new user ID page
+        } else {
+          alert("Failed to save user data");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("An error occurred while submitting the form");
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("An error occurred while submitting the form");
+    } else {
+      alert("Please fill in all fields.");
     }
   };
 
