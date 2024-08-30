@@ -4,14 +4,33 @@ const path = require("path");
 
 const dataDir = path.join(__dirname, "../data/");
 
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 const scrapeGoogleScholarProfile = async (profileUrl) => {
+  let browser;
   try {
-    const browser = await puppeteer.launch();
+    browser = await puppeteer.launch();
     const page = await browser.newPage();
 
     // Navigate to profile URL
-    await page.goto(profileUrl);
+    await page.goto(profileUrl, { waitUntil: 'networkidle2' });
     await page.waitForSelector(".gsc_a_tr");
+
+    // Click "Show more" button until it's disabled
+    let loadMoreVisible = true;
+    while (loadMoreVisible) {
+      loadMoreVisible = await page.evaluate(() => {
+        const loadMoreButton = document.querySelector("#gsc_bpf_more");
+        if (loadMoreButton && !loadMoreButton.disabled) {
+          loadMoreButton.click();
+          return true;
+        }
+        return false;
+      });
+      if (loadMoreVisible) {
+        await sleep(2000);
+      }
+    }
 
     // Extract publication links
     const publicationLinks = await page.evaluate(() => {
@@ -28,7 +47,7 @@ const scrapeGoogleScholarProfile = async (profileUrl) => {
       // Ensure the link is a complete URL
       const fullLink = link.startsWith("http") ? link : `https://scholar.google.com${link}`;
 
-      await page.goto(fullLink);
+      await page.goto(fullLink, { waitUntil: 'networkidle2' });
       await page.waitForSelector("#gsc_oci_title");
 
       // Extract detailed publication data
@@ -43,11 +62,18 @@ const scrapeGoogleScholarProfile = async (profileUrl) => {
 
         fields.forEach((field) => {
           const key = normalizeKey(field.textContent.trim());
-          const value = field.nextElementSibling?.textContent.trim() || null;
-          details[key] = value;
+          const valueElement = field.nextElementSibling;
+          if (key === 'total_citations' && valueElement) {
+            const citedByElement = valueElement.querySelector('a');
+            if (citedByElement) {
+              details[key] = citedByElement.textContent.replace('Cited by ', '').trim();
+            }
+          } else {
+            const value = valueElement?.textContent.trim() || null;
+            details[key] = value;
+          }
         });
 
-        // Additional extraction for the title and href
         const titleElement = document.querySelector(".gsc_oci_title_link");
         if (titleElement) {
           details.title = titleElement.textContent.trim();
@@ -74,9 +100,12 @@ const scrapeGoogleScholarProfile = async (profileUrl) => {
     );
     console.log("Successfully written detailed data to file");
 
-    await browser.close();
   } catch (error) {
     console.error("Error during scraping:", error);
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
   }
 };
 
