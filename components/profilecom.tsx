@@ -1,5 +1,5 @@
 "use client";
-
+import { useUserContext } from "@/context/UserContext";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -29,12 +29,12 @@ import { useRouter } from "next/navigation";
 
 
 export function Profilecom() {
+  const { userData } = useUserContext();
   const params = useParams(); // Access the params using useParams
   const userId = params.userId;
   const username = "SIH TEAM"; 
 
   const router = useRouter(); // Define `router` once
-
   function handleSearch() {
     router.push(`/search`);
   }
@@ -53,9 +53,9 @@ export function Profilecom() {
             <AvatarFallback>JD</AvatarFallback>
           </Avatar>
           <div className="flex-1">
-            <h1 className="text-2xl font-bold">{username}</h1>
+            <h1 className="text-2xl font-bold">{userData.name}</h1>
             <p className="text-muted-foreground">
-              Professor of Computer Science, Acme University
+            {userData.profession}
             </p>
           </div>
           {/* Sheet Trigger Button near Profile Name */}
@@ -76,7 +76,7 @@ export function Profilecom() {
                   <Label htmlFor="name" className="text-right">
                     Name
                   </Label>
-                  <Input id="name" value={username} readOnly className="col-span-3" />
+                  <Input id="name" value={userData.name} readOnly className="col-span-3" />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="userId" className="text-right">

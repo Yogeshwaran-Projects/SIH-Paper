@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useUserContext } from "@/context/UserContext";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChartContainer } from "@/components/ui/chart";
@@ -11,6 +12,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Rank } from "./rank";
 
 export function Summaarryy() {
+  const { userData } = useUserContext();
   const [role, setRole] = useState("");
   const [analysis, setAnalysis] = useState("");
   const [loading, setLoading] = useState(false);
@@ -76,17 +78,17 @@ export function Summaarryy() {
             🧑‍🏫
           </div>
           <div className="space-y-2 text-center">
-            <h1 className="text-3xl font-bold">Dr. Jane Doe</h1>
+            <h1 className="text-3xl font-bold">{userData.name}</h1>
             <p className="text-muted-foreground text-lg">
-              Computer Science Professor
+            {userData.profession}
             </p>
             <div className="flex items-center gap-2 text-base text-muted-foreground">
               <MailIcon className="w-5 h-5" />
-              jane.doe@university.edu
+              {userData.email}
             </div>
             <div className="flex items-center gap-2 text-base text-muted-foreground">
               <GlobeIcon className="w-5 h-5" />
-              www.janedoe.com
+              {userData.website}
             </div>
           </div>
         </div>
@@ -96,12 +98,13 @@ export function Summaarryy() {
             <div className="w-3/4">
               <h2 className="text-xl font-semibold">About</h2>
               <p className="text-muted-foreground text-lg">
-                Dr. Jane Doe is a renowned computer science professor with over
+              {userData.about}
+              {/* Dr. Jane Doe is a renowned computer science professor with over
                 15 years of experience in the field. Her research focuses on
                 machine learning, natural language processing, and the
                 application of AI in various domains. She has published numerous
                 papers in prestigious journals and conferences, and her work has
-                been widely cited.
+                been widely cited. */}
               </p>
             </div>
           </div>

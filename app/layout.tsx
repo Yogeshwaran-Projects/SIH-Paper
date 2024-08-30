@@ -1,21 +1,17 @@
-import {
-  ClerkProvider,
+import { ClerkProvider } from '@clerk/nextjs';
+import { UserProvider } from '@/context/UserContext';
+import './globals.css';
 
-} from '@clerk/nextjs'
-import './globals.css'
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body>
-         
-          {children}
-        </body>
-      </html>
+      <UserProvider>
+        <html lang="en">
+          <body>
+            {children}
+          </body>
+        </html>
+      </UserProvider>
     </ClerkProvider>
-  )
+  );
 }
