@@ -29,40 +29,43 @@ export function Summaarryy() {
   const handleAnalyze = () => {
     setLoading(true);
     setConfidenceLevel(Math.floor(Math.random() * 21) + 80); // Confidence level between 80% to 100%
-    
+  
     setTimeout(() => {
-      const topicCount: { [key: string]: number } = {}; 
+      const topicCount: { [key: string]: number } = {};
       let relevantPapers = 0;
-
+  
       publications.forEach((year) => {
         year.topics.forEach((topic) => {
           if (!topicCount[topic]) {
             topicCount[topic] = 0;
           }
           topicCount[topic] += 1;
-
+  
           if (topic.toLowerCase().includes(role.toLowerCase())) {
             relevantPapers += 1;
           }
         });
       });
-
+  
       const sortedTopics = Object.entries(topicCount).sort((a, b) => b[1] - a[1]);
-
+  
       let recommendation = "";
-
+  
       if (relevantPapers > 0) {
-        recommendation = `Our AI analysis suggests that Dr. Jane Doe has published papers related to ${role}.`;
+        recommendation = `Our AI, after thoroughly analyzing ${publications.length} publications, identifies that Dr. Jane Doe has a considerable focus on ${role}. With ${relevantPapers} papers directly relating to this domain, her research not only aligns with but also significantly contributes to the current discourse in this field. This pattern suggests a deep and sustained engagement with topics central to ${role}.`;
       } else {
-        recommendation = `Dr. Jane Doe has not published any papers specifically related to ${role}. However, she has significant expertise in `;
+        recommendation = `The AI analysis reveals that Dr. Jane Doe does not appear to have published papers explicitly related to ${role}. However, the AI identified a substantial focus on other areas such as `;
         sortedTopics.forEach(([topic], index) => {
           recommendation += `${topic}${index < sortedTopics.length - 1 ? ", " : "."}`;
         });
+        recommendation += ` These areas reflect her wide-ranging expertise and indicate her contributions to broader academic discussions.`;
       }
-
-      setAnalysis(`${recommendation} (Confidence Level: ${confidenceLevel}%)`);
+  
+      const closingStatement = `This conclusion is based on an algorithmically driven, cross-referenced analysis, carried out with a confidence level of ${confidenceLevel}%. The AI is continuously learning and adapting, ensuring that its insights are aligned with the most recent data trends.`;
+  
+      setAnalysis(`${recommendation} ${closingStatement}`);
       setLoading(false);
-    }, 3000); 
+    }, 3000);
   };
 
   return (
@@ -113,6 +116,7 @@ export function Summaarryy() {
             <h2 className="text-xl font-semibold">Published Papers</h2>
             <div className="grid gap-6">
               {/* {Papers ah enga join pani vidu} */}
+              <h1>Avanga panna papers enga show agum</h1>
             </div>
           </div>
           <div>

@@ -57,7 +57,7 @@ export function TabsDemo() {
         if (result.success) {
           alert("Submitted!");
           // Redirect to user page displaying userId
-          router.push(`/detail`); // Redirect to the new user ID page
+          router.push(`/detail/${result.userId}`);
         } else {
           alert("Failed to save user data");
         }

@@ -1,17 +1,30 @@
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
+"use client"
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation"; // Import useRouter
 
 export function Detailform() {
-  return (
-    <div className="flex justify-center items-center min-h-screen  px-4">
-      <div className="w-full max-w-4xl py-16 space-y-8 rounded-lg shadow-xl">
+  const params = useParams(); // Access the params using useParams
+  const userId = params.userId;
+  const router = useRouter(); // Initialize useRouter
 
+  // Function to handle form submission
+  const handleSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    // Navigate to the profile page with the userId
+    router.push(`/profile/${userId}`);
+  };
+
+  return (
+    <div className="flex justify-center items-center min-h-screen px-4">
+      <div className="w-full max-w-4xl py-16 space-y-8 rounded-lg shadow-xl">
         <div className="text-center">
           <h1 className="text-3xl font-bold tracking-tight text-white">Update Your Profile</h1>
           <p className="mt-3 text-lg text-gray-500">Fill out the form below to update your personal information.</p>
         </div>
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label htmlFor="name" className="block text-sm font-medium text-white">
@@ -92,5 +105,5 @@ export function Detailform() {
         </form>
       </div>
     </div>
-  )
+  );
 }
