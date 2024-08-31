@@ -17,24 +17,20 @@ const scrapeGoogleScholarProfile = async (profileUrl) => {
     await page.waitForSelector(".gsc_a_tr");
 
     // Click "Show more" button until it's disabled
-    let loadMoreVisible = true;
-    while (loadMoreVisible) {
-      loadMoreVisible = await page.evaluate(() => {
-        const loadMoreButton = document.querySelector("#gsc_bpf_more");
-        if (loadMoreButton && !loadMoreButton.disabled) {
-          loadMoreButton.click();
-          return true;
-        }
-        return false;
-      });
-      if (loadMoreVisible) {
-        await sleep(2000);
+    await page.evaluate(() => {
+      const loadMoreButton = document.querySelector("#gsc_bpf_more");
+      if (loadMoreButton && !loadMoreButton.disabled) {
+        loadMoreButton.click();
       }
-    }
+    });
+    
+    // Optional: Wait for new content to load if necessary
+    await sleep(2000);
 
     // Extract publication links
     const publicationLinks = await page.evaluate(() => {
       return Array.from(document.querySelectorAll(".gsc_a_tr .gsc_a_at"))
+        .slice(0, 30)
         .map(link => link.href)
         .filter(href => href);
     });

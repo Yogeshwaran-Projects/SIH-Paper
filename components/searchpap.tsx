@@ -17,6 +17,33 @@ export function Searchpap() {
   const handleTopicChange = (event) => {
     setTopic(event.target.value);
   };
+  
+  useEffect(() => {
+    const smpl='AI'
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5003/api/search', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query: smpl }), // Replace with your search topic
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const result = await response.json();
+        setData(result); // Store the fetched data in state
+        console.log(result); // Optionally log the data
+      } catch (error) {
+        console.error('Fetch error:', error); // Handle fetch errors
+      }
+    };
+
+    fetchData(); // Call the function to fetch data on component mount
+  }, []);
 
   const handlesearch= async ()=>{
      console.log(topic);
@@ -152,7 +179,7 @@ export function Searchpap() {
 </div>
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground">Results:</span>
-              <span className="font-medium">1,234</span>
+              <span className="font-medium">{data.length}</span>
             </div>
           </div>
           <div className="grid gap-6">
@@ -165,7 +192,9 @@ export function Searchpap() {
               </Link>
             </CardTitle>
             <CardDescription className="text-muted-foreground">
-              {paper.names.authors.map(author => author.displayName).join(', ')}
+            {paper.names?.authors && paper.names.authors.length > 1 
+            ? paper.names.authors.map(author => author.displayName).join(', ') 
+            : paper.names?.authors?.[0]?.displayName || 'No authors listed'}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -185,7 +214,7 @@ export function Searchpap() {
             </div>
           </CardFooter>
         </Card>
-      )):<p>nothing</p>}
+      )):<p>error fetching data</p>}
           </div>
           <div className="mt-8 flex justify-center">
             <Pagination>
