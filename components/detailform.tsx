@@ -17,6 +17,7 @@ export function Detailform() {
     website: "",
     profession: "",
     about: "",
+    id: userId,
   });
   const router = useRouter();
 

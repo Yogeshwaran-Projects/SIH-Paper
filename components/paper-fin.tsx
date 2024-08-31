@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
+import { useUserContext } from "@/context/UserContext";
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { DatePickerWithRange } from "./ui/date-picker-with-range"
@@ -22,6 +23,7 @@ import WordWos from '../Export/WordWos';
 import { Globe, BookOpen } from "lucide-react";
 
 export function PaperFin() {
+  const { userData } = useUserContext();
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [sortBy, setSortBy] = useState("date")
@@ -80,8 +82,8 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
               <AvatarFallback>JD</AvatarFallback>
             </Avatar>
             <div className="text-center md:text-left">
-              <h1 className="text-3xl font-bold">John Doe</h1>
-              <p className="text-muted-foreground text-lg">User ID: 12345</p>
+              <h1 className="text-3xl font-bold">{userData.name}</h1>
+              <p className="text-muted-foreground text-lg">User ID: {userData.id}</p>
             </div>
           </div>
 

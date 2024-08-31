@@ -3,7 +3,9 @@ import { useUserContext } from "@/context/UserContext";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Search,User } from "lucide-react";
+import { Search, User } from "lucide-react";
+import { toast } from "sonner";
+
 import {
   Card,
   CardContent,
@@ -26,20 +28,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-
+import { useState } from "react";
 
 export function Profilecom() {
   const { userData } = useUserContext();
   const params = useParams(); // Access the params using useParams
   const userId = params.userId;
-  const username = "SIH TEAM"; 
+  const username = "SIH TEAM";
 
   const router = useRouter(); // Define `router` once
   function handleSearch() {
     router.push(`/search`);
   }
 
-  function handleProfile() { // Corrected the function name from `handleProfie` to `handleProfile`
+  function handleProfile() {
+    // Corrected the function name from `handleProfie` to `handleProfile`
     router.push(`/Summary`);
   }
 
@@ -54,12 +57,10 @@ export function Profilecom() {
           </Avatar>
           <div className="flex-1">
             <h1 className="text-2xl font-bold">{userData.name}</h1>
-            <p className="text-muted-foreground">
-            {userData.profession}
-            </p>
+            <p className="text-muted-foreground">{userData.profession}</p>
           </div>
           {/* Sheet Trigger Button near Profile Name */}
-         
+
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="primary">Unique ID</Button>
@@ -76,7 +77,12 @@ export function Profilecom() {
                   <Label htmlFor="name" className="text-right">
                     Name
                   </Label>
-                  <Input id="name" value={userData.name} readOnly className="col-span-3" />
+                  <Input
+                    id="name"
+                    value={userData.name}
+                    readOnly
+                    className="col-span-3"
+                  />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="userId" className="text-right">
@@ -101,10 +107,10 @@ export function Profilecom() {
             <Search onClick={handleSearch} />
           </Button>
           <Button variant="ghost">
-            <User onClick={handleProfile}/>
-            </Button>
+            <User onClick={handleProfile} />
+          </Button>
         </div>
-        
+
         <div className="space-y-6">
           <div className="grid gap-4 animate-fade-in-up">
             {/* Paper Cards */}
@@ -121,96 +127,324 @@ export function Profilecom() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  This paper explores various algorithms designed to solve NP-Complete problems more efficiently...
+                  This paper explores various algorithms designed to solve
+                  NP-Complete problems more efficiently...
                 </p>
               </CardContent>
               <CardFooter className="flex justify-between">
-                <Button variant="outline">View Paper</Button>
-                <Button variant="ghost">Save</Button>
+                <Link
+                  href="https://ieeexplore.ieee.org/abstract/document/9104098/"
+                  target="_blank"
+                  passHref
+                >
+                  <Button variant="outline">View Paper</Button>
+                </Link>
+                <div className="flex space-x-1">
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been saved", {
+                        description: "You have successfully saved the paper.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been added to Read Later", {
+                        description:
+                          "You can find this paper in your Read Later list.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Read Later
+                  </Button>
+                </div>
               </CardFooter>
             </Card>
             <Card className="hover:shadow-xl transition-shadow duration-300">
               <CardHeader>
                 <CardTitle>
                   <Link href="#" className="hover:underline" prefetch={false}>
-                    Efficient Algorithms for Solving NP-Complete Problems
+                    Deep Learning Approaches for Image Recognition
                   </Link>
                 </CardTitle>
                 <CardDescription>
-                  Published in Journal of Algorithms, 2018
+                  Published in International Journal of Computer Vision, 2019
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  This paper explores various algorithms designed to solve NP-Complete problems more efficiently...
+                  This paper discusses recent advances in deep learning
+                  techniques for improved image recognition...
                 </p>
               </CardContent>
               <CardFooter className="flex justify-between">
-                <Button variant="outline">View Paper</Button>
-                <Button variant="ghost">Save</Button>
+                <Link
+                  href="https://ieeexplore.ieee.org/abstract/document/9104098/"
+                  target="blank"
+                  passHref
+                >
+                  <Button variant="outline">View Paper</Button>
+                </Link>
+                <div className="flex space-x-1">
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been saved", {
+                        description: "You have successfully saved the paper.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been added to Read Later", {
+                        description:
+                          "You can find this paper in your Read Later list.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Read Later
+                  </Button>
+                </div>
               </CardFooter>
             </Card>
+
             <Card className="hover:shadow-xl transition-shadow duration-300">
               <CardHeader>
                 <CardTitle>
                   <Link href="#" className="hover:underline" prefetch={false}>
-                    Efficient Algorithms for Solving NP-Complete Problems
+                    Blockchain Technology for Secure Transactions
                   </Link>
                 </CardTitle>
                 <CardDescription>
-                  Published in Journal of Algorithms, 2018
+                  Published in IEEE Transactions on Blockchain, 2020
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  This paper explores various algorithms designed to solve NP-Complete problems more efficiently...
+                  An overview of how blockchain technology can enhance the
+                  security of digital transactions...
                 </p>
               </CardContent>
               <CardFooter className="flex justify-between">
-                <Button variant="outline">View Paper</Button>
-                <Button variant="ghost">Save</Button>
+                <Link
+                  href="https://ieeexplore.ieee.org/abstract/document/9104098/"
+                  target="blank"
+                  passHref
+                >
+                  <Button variant="outline">View Paper</Button>
+                </Link>
+                <div className="flex space-x-1">
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been saved", {
+                        description: "You have successfully saved the paper.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been added to Read Later", {
+                        description:
+                          "You can find this paper in your Read Later list.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Read Later
+                  </Button>
+                </div>
               </CardFooter>
             </Card>
+
             <Card className="hover:shadow-xl transition-shadow duration-300">
               <CardHeader>
                 <CardTitle>
                   <Link href="#" className="hover:underline" prefetch={false}>
-                    Efficient Algorithms for Solving NP-Complete Problems
+                    Natural Language Processing in Healthcare
                   </Link>
                 </CardTitle>
                 <CardDescription>
-                  Published in Journal of Algorithms, 2018
+                  Published in Journal of Biomedical Informatics, 2021
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  This paper explores various algorithms designed to solve NP-Complete problems more efficiently...
+                  This study reviews the application of NLP techniques in
+                  healthcare data analysis...
                 </p>
               </CardContent>
               <CardFooter className="flex justify-between">
-                <Button variant="outline">View Paper</Button>
-                <Button variant="ghost">Save</Button>
+                <Link
+                  href="https://ieeexplore.ieee.org/abstract/document/9104098/"
+                  target="blank"
+                  passHref
+                >
+                  <Button variant="outline">View Paper</Button>
+                </Link>
+                <div className="flex space-x-1">
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been saved", {
+                        description: "You have successfully saved the paper.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been added to Read Later", {
+                        description:
+                          "You can find this paper in your Read Later list.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Read Later
+                  </Button>
+                </div>
               </CardFooter>
             </Card>
+
             <Card className="hover:shadow-xl transition-shadow duration-300">
               <CardHeader>
                 <CardTitle>
                   <Link href="#" className="hover:underline" prefetch={false}>
-                    Efficient Algorithms for Solving NP-Complete Problems
+                    Advances in Federated Learning
                   </Link>
                 </CardTitle>
                 <CardDescription>
-                  Published in Journal of Algorithms, 2018
+                  Published in IEEE Transactions on Machine Learning, 2022
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  This paper explores various algorithms designed to solve NP-Complete problems more efficiently...
+                  A comprehensive analysis of the latest advancements in
+                  federated learning methodologies...
                 </p>
               </CardContent>
               <CardFooter className="flex justify-between">
-                <Button variant="outline">View Paper</Button>
-                <Button variant="ghost">Save</Button>
+                <Link
+                  href="https://ieeexplore.ieee.org/abstract/document/9104098/"
+                  target="blank"
+                  passHref
+                >
+                  <Button variant="outline">View Paper</Button>
+                </Link>
+                <div className="flex space-x-1">
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been saved", {
+                        description: "You have successfully saved the paper.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    onClick={() =>
+                      toast("Paper has been added to Read Later", {
+                        description:
+                          "You can find this paper in your Read Later list.",
+                        action: {
+                          label: "Undo",
+                          onClick: () => console.log("Undo"),
+                        },
+                        style: {
+                          fontSize: "18px", // Adjust size here
+                          padding: "16px", // Adjust padding here
+                        },
+                      })
+                    }
+                  >
+                    Read Later
+                  </Button>
+                </div>
               </CardFooter>
             </Card>
             {/* Add more cards as needed */}
@@ -218,24 +452,31 @@ export function Profilecom() {
         </div>
       </div>
 
-      {/* Publications Box */}
       <div className="border border-border p-6 rounded-lg animate-fade-in-left shadow-lg">
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Publications</h2>
-            <span className="text-muted-foreground">45</span>
-          </div>
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Citations</h2>
-            <span className="text-muted-foreground">2,345</span>
-          </div>
+        <div
+  className="flex items-center justify-between cursor-pointer"
+  onClick={() => router.push("/readlater")}
+>
+  <h2 className="text-lg font-semibold">Read Later</h2>
+  <span className="text-muted-foreground">45</span>
+</div>
+<div
+  className="flex items-center justify-between cursor-pointer"
+  onClick={() => router.push("/published")}
+>
+  <h2 className="text-lg font-semibold">Publications</h2>
+  <span className="text-muted-foreground">12</span>
+</div>
+
+         
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">H-Index</h2>
             <span className="text-muted-foreground">27</span>
           </div>
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Read Later</h2>
-            <span className="text-muted-foreground">12</span>
+            <h2 className="text-lg font-semibold">Citations</h2>
+            <span className="text-muted-foreground">1,232</span>
           </div>
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">Suggestions</h2>
