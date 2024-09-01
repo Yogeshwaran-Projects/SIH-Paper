@@ -5,7 +5,7 @@ const path = require("path");
 const dataDir = path.join(__dirname, "../data/");
 const outputFile = path.join(dataDir, "webOfScienceData.json");
 
-const apiKey = '0b6a7698033fcab856c22d14832e881b50520475';
+const apiKey = '77178473434ebfb7bd93704f57f53fc59dfd3b1f';
 
 const extractIdentifier = (profileLink) => {
   const parts = profileLink.split('/');

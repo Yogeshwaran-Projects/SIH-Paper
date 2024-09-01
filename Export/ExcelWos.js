@@ -2,61 +2,56 @@ import * as XLSX from 'xlsx';
 
 const ExcelWos = ({ data, filename }) => {
   const handleExport = () => {
-    // Step 1: Define the columns based on the Web of Science data structure
+    // Define the columns based on the Web of Science data structure
     const columns = [
-      "uid",
       "title",
-      "source.sourceTitle",
-      "source.publishYear",
-      "source.publishMonth",
-      "source.volume",
-      "source.issue",
-      "source.pages.range",
-      "names.authors",
-      "keywords.authorKeywords",
-      "identifiers.doi",
-      "identifiers.issn",
-      "identifiers.eissn",
-      "links.record",
-      "links.references",
-      "links.related"
+      "publicationYear",
+      "publicationMonth",
+      "authors",
+      "sourceTitle",
+      "volume",
+      "pages",
+      "doi",
+      "recordLink",
+      "referencesLink",
+      "relatedRecordsLink"
     ];
 
-    // Step 2: Normalize data
+    // Normalize data to match the columns
     const normalizedData = data.map(item => {
       const normalizedItem = {};
 
-      columns.forEach(column => {
-        const keys = column.split('.');  // Split nested keys
-        let value = item;
-        keys.forEach(key => {
-          value = value ? value[key] : null;
-        });
-
-        // Handle authors specifically
-        if (column === "names.authors" && Array.isArray(value)) {
-          value = value.map(author => author.displayName).join('; ');
-        }
-
-        // Handle other arrays (e.g., keywords, identifiers)
-        if (Array.isArray(value) && column !== "names.authors") {
-          value = value.join('; ');
-        }
-
-        normalizedItem[column] = value;
-      });
+      // Normalize each attribute
+      normalizedItem.title = item.title || "Unknown Title";
+      normalizedItem.publicationYear = item.publicationYear || "Unknown Year";
+      normalizedItem.publicationMonth = item.publicationMonth || "Unknown Month";
+      
+      // Handle authors, assuming they are a string
+      normalizedItem.authors = item.authors ? item.authors.join(', ') : "Unknown Authors";
+      
+      normalizedItem.sourceTitle = item.sourceTitle || "Unknown Source";
+      normalizedItem.volume = item.volume || "N/A";
+      normalizedItem.pages = item.pages || "N/A";
+      
+      // Handle DOI
+      normalizedItem.doi = item.doi || "No DOI available";
+      
+      // Handle links
+      normalizedItem.recordLink = item.recordLink || "No Link available";
+      normalizedItem.referencesLink = item.referencesLink || "No References Link available";
+      normalizedItem.relatedRecordsLink = item.relatedRecordsLink || "No Related Records Link available";
 
       return normalizedItem;
     });
 
-    // Step 3: Create a new workbook and worksheet
+    // Create a new workbook and worksheet
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.json_to_sheet(normalizedData, { header: columns });
 
     // Append the worksheet to the workbook
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-    // Step 4: Generate a binary string and export the file
+    // Generate a binary string and export the file
     const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
 
     const blob = new Blob([wbout], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
