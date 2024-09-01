@@ -53,7 +53,7 @@ export function Profilecom() {
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="primary">Unique ID</Button>
+              <Button>Unique ID</Button>
             </SheetTrigger>
             <SheetContent side="bottom">
               <SheetHeader>

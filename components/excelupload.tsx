@@ -9,29 +9,35 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import LoadingComponent from './LoadingComponent';
 
+// Define the interface for data items
+interface DataItem {
+    name: string;
+    googlescholar: string;
+    wos: string;
+}
 
 export function Excelupload() {
-    const [data, setData] = useState([]);
-    const [selectedName, setSelectedName] = useState('');
-    const [options, setOptions] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [fileName, setFileName] = useState('No file chosen'); // State for file name
-    const [showLoadingScreen, setShowLoadingScreen] = useState(false); // State for showing loading screen
-    const fileInputRef = useRef(null); // Reference to the hidden file input
+    const [data, setData] = useState<DataItem[]>([]);
+    const [selectedName, setSelectedName] = useState<string>('');
+    const [options, setOptions] = useState<string[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [fileName, setFileName] = useState<string>('No file chosen'); // State for file name
+    const [showLoadingScreen, setShowLoadingScreen] = useState<boolean>(false); // State for showing loading screen
+    const fileInputRef = useRef<HTMLInputElement | null>(null); // Reference to the hidden file input
     const router = useRouter();
 
     // Handle file upload and parsing
-    const handleFileUpload = (e) => {
-        const file = e.target.files[0];
+    const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
         if (file) {
             setFileName(file.name); // Update file name
             setLoading(true); // Show loading indicator
             const reader = new FileReader();
             reader.onload = (event) => {
-                const workbook = XLSX.read(event.target.result, { type: 'array' });
+                const workbook = XLSX.read(event.target?.result as ArrayBuffer, { type: 'array' });
                 const sheetName = workbook.SheetNames[0];
                 const sheet = workbook.Sheets[sheetName];
-                const json = XLSX.utils.sheet_to_json(sheet);
+                const json = XLSX.utils.sheet_to_json<DataItem>(sheet); // Use generic type
                 setData(json);
 
                 // Prepare dropdown options
@@ -45,7 +51,7 @@ export function Excelupload() {
     };
 
     // Handle dropdown change
-    const handleDropdownChange = (value) => {
+    const handleDropdownChange = (value: string) => {
         setSelectedName(value);
     };
 
@@ -114,7 +120,7 @@ export function Excelupload() {
                                     style={{ display: 'none' }}
                                 />
                                 {/* Button to trigger file input */}
-                                <Button variant="outline" onClick={() => fileInputRef.current.click()}>
+                                <Button variant="outline" onClick={() => fileInputRef.current?.click()}>
                                     Choose File
                                 </Button>
                             </div>
