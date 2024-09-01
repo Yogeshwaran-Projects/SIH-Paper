@@ -39,7 +39,7 @@ export function Publishedpap() {
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold">The Impact of Climate Change on Biodiversity</h3>
                 <p className="text-muted-foreground line-clamp-4">
-                  This paper examines the effects of global warming on the world's ecosystems and the loss of
+                  This paper examines the effects of global warming on the world&apos;s ecosystems and the loss of
                   biodiversity. It explores potential mitigation strategies and policy recommendations.
                 </p>
               </div>
@@ -60,8 +60,8 @@ export function Publishedpap() {
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold">The Future of Renewable Energy</h3>
                 <p className="text-muted-foreground line-clamp-4">
-                  This paper explores the potential of renewable energy sources, such as solar, wind, and hydroelectric
-                  power, to meet the world's growing energy demands.
+                 This paper explores the potential of renewable energy sources, such as solar, wind, and hydroelectric
+                  power, to meet the world&apos;s growing energy demands.
                 </p>
               </div>
             </CardContent>

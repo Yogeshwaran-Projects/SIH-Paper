@@ -108,7 +108,7 @@ export function TabsDemo() {
             <CardHeader>
               <CardTitle>WOS Account</CardTitle>
               <CardDescription>
-                Enter your WOS email and ID. Click save when you're done.
+                Enter your WOS email and ID. Click save when you&apos;re done.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -143,7 +143,7 @@ export function TabsDemo() {
               <CardTitle>Google Scholar Account</CardTitle>
               <CardDescription>
                 Enter your Google Scholar email and ID. Click submit when
-                you're done.
+                you&apos;re done.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">

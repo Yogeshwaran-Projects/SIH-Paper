@@ -7,9 +7,9 @@ export default function LoadingComponent() {
           <div className="animate-bounce">
             <div className="h-12 w-12 animate-spin text-primary" />
           </div>
-          <p className="text-muted-foreground animate-pulse">Hang tight, we're getting everything ready for you!</p>
+          <p className="text-muted-foreground animate-pulse">Hang tight, we&apos;re getting everything ready for you!</p>
           <div className="flex flex-col items-center gap-2">
-            <p className="text-muted-foreground">We're working hard to make this the best experience for you.</p>
+            <p className="text-muted-foreground">we&apos;reworking hard to make this the best experience for you.</p>
           </div>
         </div>
       </div>
