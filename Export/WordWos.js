@@ -2,7 +2,7 @@ import React from 'react';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 
-const DownloadWordWos = ({ publications }) => {
+const DownloadWordWos = ({ publications ,filename }) => {
   const handleDownload = () => {
     const doc = new Document({
       creator: "Your App Name",
@@ -46,8 +46,8 @@ const DownloadWordWos = ({ publications }) => {
                 children: [
                   new TextRun({
                     text: `Authors: ${
-                      pub.names && pub.names.authors
-                        ? pub.names.authors.map(author => author.displayName).join(', ')
+                      pub.authors && pub.authors.length > 0
+                        ? pub.authors.join(', ')
                         : "Unknown Authors"
                     }`,
                   }),
@@ -57,7 +57,7 @@ const DownloadWordWos = ({ publications }) => {
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: `Journal: ${pub.source?.sourceTitle || "Unknown Journal"}`,
+                    text: `Journal: ${pub.sourceTitle || "Unknown Journal"}`,
                   }),
                 ],
               }),
@@ -65,7 +65,7 @@ const DownloadWordWos = ({ publications }) => {
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: `Year: ${pub.source?.publishYear || "Unknown Year"}`,
+                    text: `Year: ${pub.publicationYear || "Unknown Year"}`,
                   }),
                 ],
               }),
@@ -73,7 +73,7 @@ const DownloadWordWos = ({ publications }) => {
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: `DOI: ${pub.identifiers?.doi || "No DOI available"}`,
+                    text: `DOI: ${pub.doi || "No DOI available"}`,
                   }),
                 ],
               }),
@@ -82,8 +82,8 @@ const DownloadWordWos = ({ publications }) => {
                 children: [
                   new TextRun({
                     text: `Keywords: ${
-                      pub.keywords?.authorKeywords
-                        ? pub.keywords.authorKeywords.join(', ')
+                      pub.keywords && pub.keywords.length > 0
+                        ? pub.keywords.join(', ')
                         : "No Keywords available"
                     }`,
                   }),
@@ -93,7 +93,7 @@ const DownloadWordWos = ({ publications }) => {
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: `Record Link: ${pub.links?.record || "No Link available"}`,
+                    text: `Record Link: ${pub.recordLink || "No Link available"}`,
                   }),
                 ],
               }),
@@ -101,7 +101,7 @@ const DownloadWordWos = ({ publications }) => {
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: `References Link: ${pub.links?.references || "No References Link available"}`,
+                    text: `References Link: ${pub.referencesLink || "No References Link available"}`,
                   }),
                 ],
               }),
@@ -109,7 +109,7 @@ const DownloadWordWos = ({ publications }) => {
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: `Related Records Link: ${pub.links?.related || "No Related Records Link available"}`,
+                    text: `Related Records Link: ${pub.relatedRecordsLink || "No Related Records Link available"}`,
                   }),
                 ],
               }),
@@ -122,7 +122,7 @@ const DownloadWordWos = ({ publications }) => {
     });
 
     Packer.toBlob(doc).then((blob) => {
-      saveAs(blob, "WebOfSciencePublications.docx");
+      saveAs(blob, `${filename}.docx`);
       console.log("Word document created successfully.");
     });
   };

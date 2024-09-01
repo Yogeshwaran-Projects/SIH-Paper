@@ -47,16 +47,7 @@ const ExcelUploader = () => {
                 try {
                     // Send Google Scholar URL
                     await fetch('http://localhost:5003');
-                    await fetch('http://localhost:5003/api/scrape/googlescholar', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            url: selectedData.googlescholar,
-                        }),
-                    });
-
+                    
                     // Send Web of Science URL
                     await fetch('http://localhost:5003/api/scrape/webofscience', {
                         method: 'POST',
@@ -67,7 +58,25 @@ const ExcelUploader = () => {
                             url: selectedData.wos,
                         }),
                     });
-
+                    await fetch('http://localhost:5003/api/scrape/scopus', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            url: selectedData.scopus,
+                        }),
+                    });
+                    await fetch('http://localhost:5003/api/scrape/googlescholar', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            url: selectedData.googlescholar,
+                        }),
+                    });
+                    
                     console.log('Data sent successfully');
                 } catch (error) {
                     console.error('Error sending data:', error);

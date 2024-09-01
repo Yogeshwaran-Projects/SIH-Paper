@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const apiKey = '77178473434ebfb7bd93704f57f53fc59dfd3b1f'; // Replace with your actual API key
+const apiKey = 'a8a4d857bb32b09cde009e2ce4d37398694ba088'; // Replace with your actual API key
 
 const wossearch = async (queryString)=> {
   try {

@@ -16,21 +16,10 @@ const scrapeGoogleScholarProfile = async (profileUrl) => {
     await page.goto(profileUrl, { waitUntil: 'networkidle2' });
     await page.waitForSelector(".gsc_a_tr");
 
-    // Click "Show more" button until it's disabled
-    await page.evaluate(() => {
-      const loadMoreButton = document.querySelector("#gsc_bpf_more");
-      if (loadMoreButton && !loadMoreButton.disabled) {
-        loadMoreButton.click();
-      }
-    });
-    
-    // Optional: Wait for new content to load if necessary
-    await sleep(2000);
-
     // Extract publication links
     const publicationLinks = await page.evaluate(() => {
       return Array.from(document.querySelectorAll(".gsc_a_tr .gsc_a_at"))
-        .slice(0, 30)
+        .slice(0,15)
         .map(link => link.href)
         .filter(href => href);
     });
