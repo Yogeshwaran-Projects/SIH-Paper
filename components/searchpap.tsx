@@ -1,26 +1,28 @@
 "use client"
 import Link from "next/link"
-import { useEffect,useState } from "react"
+import { JSX, SVGProps, useEffect, useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import Exceluploadb from "@/components/Exceluploadb";
-
-
+import Exceluploadb from "@/components/Exceluploadb"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationEllipsis, PaginationNext } from "@/components/ui/pagination"
 import { Globe } from "lucide-react";
 import { BookOpen } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+
 export function Searchpap() {
   const [data, setData] = useState([]);
   const [topic, setTopic] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10); // Set the number of items per page
 
   const handleTopicChange = (event) => {
     setTopic(event.target.value);
   };
   
   useEffect(() => {
-    const smpl='AI'
+    const smpl = 'AI'
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:5003/api/search', {
@@ -28,7 +30,7 @@ export function Searchpap() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ query: smpl }), // Replace with your search topic
+          body: JSON.stringify({ query: smpl }),
         });
 
         if (!response.ok) {
@@ -36,39 +38,57 @@ export function Searchpap() {
         }
 
         const result = await response.json();
-        setData(result); // Store the fetched data in state
-        console.log(result); // Optionally log the data
+        setData(result);
+        console.log(result);
       } catch (error) {
-        console.error('Fetch error:', error); // Handle fetch errors
+        console.error('Fetch error:', error);
       }
     };
 
-    fetchData(); // Call the function to fetch data on component mount
+    fetchData();
   }, []);
 
-  const handlesearch= async ()=>{
-     console.log(topic);
-     fetch('http://localhost:5003/api/search', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query: topic }), // Ensure 'topic' is defined
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+  const handlesearch = async () => {
+    console.log(topic);
+    if (topic === "087004") {
+      setData([{
+        uid: "087004",
+        profile: {
+          name: "Yogeshwaran",
+          title: "Software Engineer at Acme Inc.",
+          description: "Yogeshwaran is a skilled software engineer with a passion for building innovative products.",
+          image: "/path/to/avatar.jpg" // Add a path to the avatar image if you have one
         }
-        return response.json();
+      }]);
+    } else {
+      fetch('http://localhost:5003/api/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: topic }),
       })
-      .then(data => {
-        setData(data); // Assuming setData is a state setter function to store the data
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Fetch error:', error); // Handle fetch errors
-      });
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          setData(data);
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+        });
+    }
   };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -79,180 +99,186 @@ export function Searchpap() {
           </Link>
           <form className="relative w-full max-w-3xl">
             <div>
-  <Input
-    type="search"
-    placeholder="Search papers..."
-    className="w-full rounded-md bg-primary-foreground/10 px-4 py-2 text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
-    value={topic}
-    onChange={handleTopicChange}
-  />
-  
-  <Button
-    type="button"
-    variant="ghost"
-    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-white hover:bg-primary-foreground/20 focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
-    onClick={handlesearch}
-  >
-    <div className="flex items-center gap-10"> 
-      <SearchIcon className="h-5 w-5 text-white" />
-      
-    </div>
-  </Button>
-  
-  </div>
-</form>
-<Exceluploadb />
+              <Input
+                type="search"
+                placeholder="Search papers..."
+                className="w-full rounded-md bg-primary-foreground/10 px-4 py-2 text-white placeholder:text-white focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
+                value={topic}
+                onChange={handleTopicChange}
+              />
+              <Button
+                type="button"
+                variant="ghost"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-white hover:bg-primary-foreground/20 focus:outline-none focus:ring-2 focus:ring-primary-foreground/50"
+                onClick={handlesearch}
+              >
+                <div className="flex items-center gap-10">
+                  <SearchIcon className="h-5 w-5 text-white" />
+                </div>
+              </Button>
+            </div>
+          </form>
+          <Exceluploadb />
         </div>
-        
       </header>
       <main className="flex-1 bg-background">
         <div className="container mx-auto py-8 px-6">
           <div className="mb-6 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-  {/* Filter by Title, Author, etc. */}
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="outline" className="flex items-center gap-2">
-        <FilterIcon className="h-5 w-5" />
-        Filter
-      </Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="start" sideOffset={8}>
-      <DropdownMenuLabel>Filter by:</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuCheckboxItem checked>Title</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem>Author</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem>Publication Date</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem>Keywords</DropdownMenuCheckboxItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
+            <div className="flex items-center gap-4">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <FilterIcon className="h-5 w-5" />
+                    Filter
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" sideOffset={8}>
+                  <DropdownMenuLabel>Filter by:</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem checked>Title</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Author</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Publication Date</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Keywords</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
-  {/* Sort by Relevance, Date, etc. */}
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="outline" className="flex items-center gap-2">
-        <ListOrderedIcon className="h-5 w-5" />
-        Sort
-      </Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="start" sideOffset={8}>
-      <DropdownMenuLabel>Sort by:</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuRadioGroup value="relevance">
-        <DropdownMenuRadioItem value="relevance">Relevance</DropdownMenuRadioItem>
-        <DropdownMenuRadioItem value="date">Date (Newest)</DropdownMenuRadioItem>
-        <DropdownMenuRadioItem value="date-asc">Date (Oldest)</DropdownMenuRadioItem>
-      </DropdownMenuRadioGroup>
-    </DropdownMenuContent>
-  </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <ListOrderedIcon className="h-5 w-5" />
+                    Sort
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" sideOffset={8}>
+                  <DropdownMenuLabel>Sort by:</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuRadioGroup value="relevance">
+                    <DropdownMenuRadioItem value="relevance">Relevance</DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="date">Date (Newest)</DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="date-asc">Date (Oldest)</DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
-  {/* Filter by WOS */}
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-    <Button variant="outline" className="flex items-center gap-2">
-        <Globe className="h-5 w-5" />
-        WOS
-      </Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="start" sideOffset={8}>
-      <DropdownMenuLabel>Filter by WOS:</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuCheckboxItem>Journal Articles</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem>Conference Papers</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem>Book Chapters</DropdownMenuCheckboxItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Globe className="h-5 w-5" />
+                    WOS
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" sideOffset={8}>
+                  <DropdownMenuLabel>Filter by WOS:</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Journal Articles</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Conference Papers</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Book Chapters</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
-  {/* Filter by Google Scholar */}
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-    <Button variant="outline" className="flex items-center gap-2">
-        <BookOpen className="h-5 w-5" />
-        Google Scholar
-      </Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="start" sideOffset={8}>
-      <DropdownMenuLabel>Filter by Google Scholar:</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuCheckboxItem>Articles</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem>Citations</DropdownMenuCheckboxItem>
-      <DropdownMenuCheckboxItem>Patents</DropdownMenuCheckboxItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
-</div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <BookOpen className="h-5 w-5" />
+                    Google Scholar
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" sideOffset={8}>
+                  <DropdownMenuLabel>Filter by Google Scholar:</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Articles</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Citations</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Patents</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground">Results:</span>
               <span className="font-medium">{data.length}</span>
             </div>
           </div>
           <div className="grid gap-6">
-          {data.length>0?data.map(paper => (
-        <Card key={paper.uid}>
-          <CardHeader>
-            <CardTitle>
-              <Link href={paper.links.record} className="text-lg font-medium text-foreground hover:underline" prefetch={false}>
-                {paper.title}
-              </Link>
-            </CardTitle>
-            <CardDescription className="text-muted-foreground">
-            {paper.names?.authors && paper.names.authors.length > 1 
-            ? paper.names.authors.map(author => author.displayName).join(', ') 
-            : paper.names?.authors?.[0]?.displayName || 'No authors listed'}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              {`Published: ${paper.source.publishMonth} ${paper.source.publishYear}, Volume ${paper.source.volume}, Pages ${paper.source.pages.range}`}
-            </p>
-          </CardContent>
-          <CardFooter className="flex items-center justify-between">
-            <div className="text-muted-foreground">
-              DOI: {paper.identifiers.doi}
-            </div>
-            <div className="flex items-center gap-2">
-              <TagIcon className="h-4 w-4 text-muted-foreground" />
-              <span className="text-muted-foreground">
-                {paper.keywords.authorKeywords.length > 0 ? paper.keywords.authorKeywords.join(', ') : 'No keywords available'}
-              </span>
-            </div>
-          </CardFooter>
-        </Card>
-      )):<p>error fetching data</p>}
+            {currentItems.length > 0 ? (
+              currentItems.map(paper => (
+                paper.uid === "087004" ? (
+                  <Card key={paper.uid} className="flex max-w-[600px] overflow-hidden">
+                    <div className="flex-1 p-6 text-center">
+                      <Avatar className="mx-auto mb-4 h-24 w-24">
+                        <AvatarImage src={paper.profile.image} alt="Profile Image" />
+                        <AvatarFallback>{paper.profile.name[0]}</AvatarFallback>
+                      </Avatar>
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-bold">{paper.profile.name}</h3>
+                        <p className="text-muted-foreground">{paper.profile.title}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {paper.profile.description}
+                        </p>
+                      </div>
+                      <Link href="/dummy">
+  <Button className="mt-4">
+    View Profile
+  </Button>
+</Link>
+
+
+                    </div>
+                  </Card>
+                ) : (
+                  <Card key={paper.uid}>
+                    <CardHeader>
+                      <CardTitle>{paper.title}</CardTitle>
+                      <CardDescription>{paper.author}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-col gap-4">
+                        <p>{paper.abstract}</p>
+                        <span className="text-xs text-muted-foreground">{new Date(paper.publicationDate).toLocaleDateString()}</span>
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <Link href={paper.links.record} target="_blank" className="text-sm font-medium text-primary-foreground hover:underline" prefetch={false}>
+                        Read more
+                      </Link>
+                    </CardFooter>
+                  </Card>
+                )
+              ))
+            ) : (
+              <div className="text-muted-foreground">
+                <p>No results found.</p>
+              </div>
+            )}
           </div>
-          <div className="mt-8 flex justify-center">
-            <Pagination>
-              <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious href="#" />
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#" isActive>
-                    2
+          <Pagination className="mt-8 flex justify-center">
+            <PaginationPrevious
+              disabled={currentPage === 1}
+              onClick={() => paginate(currentPage - 1)}
+            >
+              Previous
+            </PaginationPrevious>
+            <PaginationContent>
+              {[...Array(Math.ceil(data.length / itemsPerPage))].map((_, i) => (
+                <PaginationItem key={i} active={i + 1 === currentPage}>
+                  <PaginationLink onClick={() => paginate(i + 1)}>
+                    {i + 1}
                   </PaginationLink>
                 </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationNext href="#" />
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
-          </div>
+              ))}
+            </PaginationContent>
+            <PaginationNext
+              disabled={currentPage === Math.ceil(data.length / itemsPerPage)}
+              onClick={() => paginate(currentPage + 1)}
+            >
+              Next
+            </PaginationNext>
+          </Pagination>
         </div>
       </main>
-      
     </div>
-  )
+  );
 }
 
-function FilterIcon(props) {
+function FilterIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -272,7 +298,7 @@ function FilterIcon(props) {
 }
 
 
-function ListOrderedIcon(props) {
+function ListOrderedIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -297,7 +323,7 @@ function ListOrderedIcon(props) {
 }
 
 
-function SearchIcon(props) {
+function SearchIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -318,7 +344,7 @@ function SearchIcon(props) {
 }
 
 
-function TagIcon(props) {
+function TagIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

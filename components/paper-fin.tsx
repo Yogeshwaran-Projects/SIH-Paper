@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect,useState } from "react"
+import { JSX, SVGProps, useEffect,useState } from "react"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import {
   DropdownMenu,
@@ -285,7 +285,7 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
   )
 }
 
-function ArrowUpDownIcon(props) {
+function ArrowUpDownIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -307,7 +307,7 @@ function ArrowUpDownIcon(props) {
   )
 }
 
-function DownloadIcon(props) {
+function DownloadIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -328,7 +328,7 @@ function DownloadIcon(props) {
   )
 }
 
-function FileIcon(props) {
+function FileIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -348,7 +348,7 @@ function FileIcon(props) {
   )
 }
 
-function FileSpreadsheetIcon(props) {
+function FileSpreadsheetIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

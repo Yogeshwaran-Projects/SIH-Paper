@@ -2,6 +2,7 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
 import { useUserContext } from "@/context/UserContext";
+import { JSX, SVGProps } from "react";
 
 export function Usernamespaper() {
   const { userData } = useUserContext();
@@ -81,7 +82,7 @@ export function Usernamespaper() {
   )
 }
 
-function ChromeIcon(props) {
+function ChromeIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -105,7 +106,7 @@ function ChromeIcon(props) {
 }
 
 
-function ScanSearchIcon(props) {
+function ScanSearchIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
