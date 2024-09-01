@@ -84,6 +84,15 @@ export function Excelupload() {
                             url: selectedData.wos,
                         }),
                     });
+                    await fetch('http://localhost:5003/api/scrape/scopus', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            url: selectedData.scopus,
+                        }),
+                    });
 
                     console.log('Data sent successfully');
                 } catch (error) {

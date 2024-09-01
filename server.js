@@ -8,6 +8,7 @@ const app = express();
 const PORT = 5003;
 
 // Import your scraping functions
+const getPublicationsFromScopus = require("./scraper/getPublicationsFromScopus");
 const scrapeGoogleScholar = require('./scraper/googleScraper');
 const getPublicationsByIdentifier = require('./scraper/WebofsciScraper');
 const wossearch = require('./scraper/wossearch'); // Ensure correct path
@@ -71,6 +72,18 @@ app.get('/api/v1/webofscience', (req, res) => {
   });
 });
 
+app.get("/api/v1/scopus", (req, res) => {
+  fs.readFile(path.join(dataDir, "scopusData.json"), "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error reading Scopus data file");
+    } else {
+      console.log("Scopus data returned from API:", JSON.parse(data));
+      res.json(JSON.parse(data));
+    }
+  });
+});
+
 // Endpoint to trigger Google Scholar scraping
 app.post('/api/scrape/googlescholar', async (req, res) => {
   const { url } = req.body;
@@ -81,6 +94,21 @@ app.post('/api/scrape/googlescholar', async (req, res) => {
   try {
     await scrapeGoogleScholar(url);
     res.status(200).send('Scraping Google Scholar profile initiated');
+  } catch (error) {
+    console.error('Error during scraping:', error);
+    res.status(500).send('Error initiating Google Scholar scraping');
+  }
+});
+
+app.post('/api/scrape/scopus', async (req, res) => {
+  const { url } = req.body;
+  if (!url) {
+    return res.status(400).send('URL is required');
+  }
+
+  try {
+    await getPublicationsFromScopus(url);
+    res.status(200).send('Scraping scopus profile initiated');
   } catch (error) {
     console.error('Error during scraping:', error);
     res.status(500).send('Error initiating Google Scholar scraping');

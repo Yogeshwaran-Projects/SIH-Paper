@@ -24,9 +24,12 @@ import { Globe, BookOpen } from "lucide-react";
 
 export function PaperFin() {
   const { userData } = useUserContext();
-  const [data, setData] = useState([]);
+  const [gsdata, setgsData] = useState([]);
+  const [wosdata, setwosData] = useState([]);
+  const [scopusdata, scopussetData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [sortBy, setSortBy] = useState("date")
+  const [selectedSource, setselectedSource] = useState("wos")
   const [startYear, setStartYear] = useState<number | undefined>(undefined)
   const [endYear, setEndYear] = useState<number | undefined>(undefined)
   const [yearDropdownOpen, setYearDropdownOpen] = useState(false)
@@ -41,37 +44,160 @@ export function PaperFin() {
             return response.json();
         })
         .then(data => {
-            setData(data);
-            setFilteredData(data);
+            setwosData(data);
+            // setFilteredData(data);
+        })
+        .catch(error=>console.log(error));
+    fetch('http://localhost:5003/api/v1/googlescholaruser')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            setgsData(data);
+            // setFilteredData(data);
+        })
+        .catch(error=>console.log(error));
+    fetch('http://localhost:5003/api/v1/scopus')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            scopussetData(data);
+            // setFilteredData(data);
         })
         .catch(error=>console.log(error));
 }, []);
 
+const normalizeWOSData = (item) => ({
+  title: item.title,
+  publicationYear: item.source.publishYear,
+  publicationMonth: item.source.publishMonth,
+  authors: item.names.authors.map(author => author.displayName),
+  sourceTitle: item.source.sourceTitle,
+  volume: item.source.volume,
+  pages: item.source.pages.range,
+  doi: item.identifiers.doi,
+  recordLink: item.links.record,
+});
+
+const normalizeGoogleScholarData = (item) => {
+  const dateParts = item.publication_date.split('/');
+  return {
+    title: item.title,
+    publicationYear: parseInt(dateParts[0], 10),
+    publicationMonth: parseInt(dateParts[1], 10) || 1, // default to January if month is not available
+    authors: item.authors.split(', '),
+    sourceTitle: item.journal,
+    volume: item.volume,
+    pages: item.pages,
+    doi: null, // Google Scholar doesn't provide DOI
+    recordLink: item.link,
+  };
+};
+
+const normalizeScopusData = (item) => {
+  const dateParts = item['prism:coverDate'].split('-');
+  return {
+    title: item['dc:title'],
+    publicationYear: parseInt(dateParts[0], 10),
+    publicationMonth: parseInt(dateParts[1], 10) || 1, // default to January if month is not available
+    authors: [item['dc:creator']],
+    sourceTitle: item['prism:publicationName'],
+    volume: null, // Scopus data might not have volume info
+    pages: item['prism:pageRange'],
+    doi: item['prism:doi'],
+    recordLink: item['prism:url'],
+  };
+};
+
   // Generate a list of years for the dropdown
   const years = Array.from({ length: currentYear - 2000 + 1 }, (_, i) => 2000 + i)
 
+  const handleFilterWOS = () => {
+    setselectedSource("wos");
+    applyFilterAndSort("latest", startYear, endYear, "wos");
+  };
+  
+  const handleFilterGoogleScholar = () => {
+    setselectedSource("googlescholar");
+    applyFilterAndSort("latest", startYear, endYear, "googlescholar");
+  };
+  
+  const handleFilterScopus = () => {
+    setselectedSource("scopus");
+    applyFilterAndSort("latest", startYear, endYear, "scopus");
+  };
+
   const handleYearRangeDone = () => {
     setYearDropdownOpen(false)
-    applyFilterAndSort("latest", startYear, endYear);
-    // console.log(`Sorting from ${startYear} to ${endYear}`)
+    applyFilterAndSort("latest", startYear, endYear, selectedSource);
+    // console.log(Sorting from ${startYear} to ${endYear})
   }
-const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | undefined, endYear: number | undefined) => {
-  const filtered = data.filter(item => {
-    const publicationYear = item.source.publishYear;
-    const start = startYear ? parseInt(startYear.toString(), 10) : -Infinity;
-    const end = endYear ? parseInt(endYear.toString(), 10) : Infinity;
-    return publicationYear >= start && publicationYear <= end;
-  });
 
-  const sorted = filtered.sort((a, b) => {
-    const dateA = new Date(`${a.source.publishYear}-${a.source.publishMonth}-01`);
-    const dateB = new Date(`${b.source.publishYear}-${b.source.publishMonth}-01`);
-    return sortOrder === "latest" ? dateB.getTime() - dateA.getTime() : dateA.getTime() - dateB.getTime();
-  });
-
-  setFilteredData(sorted);
-  console.log(sorted);
-};
+  const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | undefined, endYear: number | undefined, dataSource: "wos" | "googlescholar" | "scopus") => {
+    let dataToFilter = [];
+    
+    if (dataSource === "wos") {
+      dataToFilter = wosdata.map(normalizeWOSData);
+    } else if (dataSource === "googlescholar") {
+      dataToFilter = gsdata.map(normalizeGoogleScholarData);
+    } else if (dataSource === "scopus") {
+        console.log(scopusdata);
+        dataToFilter = scopusdata['search-results']['entry'].map(normalizeScopusData);
+    }
+  
+    const filtered = dataToFilter.filter(item => {
+      const start = startYear ? parseInt(startYear.toString(), 10) : -Infinity;
+      const end = endYear ? parseInt(endYear.toString(), 10) : Infinity;
+      return item.publicationYear >= start && item.publicationYear <= end;
+    });
+  
+    const sorted = filtered.sort((a, b) => {
+      const dateA = new Date(`${a.publicationYear}-${a.publicationMonth}-01`);
+      const dateB = new Date(`${b.publicationYear}-${b.publicationMonth}-01`);
+      return sortOrder === "latest" ? dateB.getTime() - dateA.getTime() : dateA.getTime() - dateB.getTime();
+    });
+  
+    setFilteredData(sorted);
+    console.log(sorted);
+  };
+  
+  const renderData = () => {
+        return filteredData.map((item, index) => (
+          <Card key={index} className="p-6 shadow-lg">
+            <CardContent>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+              </div>
+              <p className="text-muted-foreground text-lg">
+                Published in {item.sourceTitle}, {item.publicationYear}
+              </p>
+              <p className="text-muted-foreground text-lg">
+                Volume: {item.volume}, Pages: {item.pages}
+              </p>
+              <div className="text-sm text-muted-foreground mt-4">
+                Authors: {item.authors.join(', ')}
+              </div>
+              <div className="text-sm text-muted-foreground mt-4">
+                DOI: <a href={`https://doi.org/${item.doi}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                  {item.doi}
+                </a>
+              </div>
+              <div className="text-sm text-muted-foreground mt-4">
+                <a href={item.recordLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
+                  View Full Record
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+        ));
+  };
 
   return (
     <><div className="container mx-auto px-4 md:px-6 py-12">
@@ -102,9 +228,9 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" sideOffset={8}>
-          <DropdownMenuLabel>Filter by WOS:</DropdownMenuLabel>
+          <DropdownMenuLabel >Filter by WOS:</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem>Journal Articles</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem onClick={() => handleFilterWOS()}>Journal Articles</DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>Conference Papers</DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>Book Chapters</DropdownMenuCheckboxItem>
         </DropdownMenuContent>
@@ -117,9 +243,9 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" sideOffset={8}>
-          <DropdownMenuLabel>Filter by Scopus:</DropdownMenuLabel>
+          <DropdownMenuLabel >Filter by Scopus:</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem>Journal Articles</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem onClick={() => handleFilterScopus()}>Journal Articles</DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>Conference Papers</DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>Book Chapters</DropdownMenuCheckboxItem>
         </DropdownMenuContent>
@@ -133,9 +259,9 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" sideOffset={8}>
-          <DropdownMenuLabel>Filter by Google Scholar:</DropdownMenuLabel>
+          <DropdownMenuLabel >Filter by Google Scholar:</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem>Articles</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem onClick={() => handleFilterGoogleScholar()}>Articles</DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>Citations</DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>Patents</DropdownMenuCheckboxItem>
         </DropdownMenuContent>
@@ -221,7 +347,7 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
                         prefetch={false}
                       >
                         <FileSpreadsheetIcon className="h-6 w-6" />
-                        <ExcelWos data={filteredData} filename="web_of_science_data" />
+                        <ExcelWos data={filteredData} filename={selectedSource+"_excelfile"} />
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
@@ -231,7 +357,7 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
                         prefetch={false}
                       >
                         <FileIcon className="h-6 w-6" />
-                        <WordWos publications={filteredData} />
+                        <WordWos publications={filteredData} filename={selectedSource+"_wordfile"}/>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
@@ -249,34 +375,7 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
               </div>
             </div>
             <div className="grid gap-8">
-              {filteredData.map((item, index) => (
-                <Card key={index} className="p-6 shadow-lg">
-                  <CardContent>
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-xl font-semibold">{item.title}</h3>
-                    </div>
-                    <p className="text-muted-foreground text-lg">
-                      Published in {item.source.sourceTitle}, {item.source.publishYear}
-                    </p>
-                    <p className="text-muted-foreground text-lg">
-                      Volume: {item.source.volume}, Pages: {item.source.pages.range}
-                    </p>
-                    <div className="text-sm text-muted-foreground mt-4">
-                      Authors: {item.names.authors.map(author => author.displayName).join(', ')}
-                    </div>
-                    <div className="text-sm text-muted-foreground mt-4">
-                      DOI: <a href={`https://doi.org/${item.identifiers.doi}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
-                        {item.identifiers.doi}
-                      </a>
-                    </div>
-                    <div className="text-sm text-muted-foreground mt-4">
-                      <a href={item.links.record} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
-                        View Full Record
-                      </a>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+              {renderData()}
               {/* Repeat for other cards */}
             </div>
           </div>
