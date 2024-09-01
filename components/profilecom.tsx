@@ -463,11 +463,14 @@ export function Profilecom() {
             <h2 className="text-lg font-semibold">Publications</h2>
             <span className="text-muted-foreground">12</span>
           </div>
-
-          <div className="flex items-center justify-between">
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => router.push("/hindex")}
+          >
             <h2 className="text-lg font-semibold">H-Index</h2>
             <span className="text-muted-foreground">27</span>
           </div>
+          
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">Citations</h2>
             <span className="text-muted-foreground">1,232</span>

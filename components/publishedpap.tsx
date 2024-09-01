@@ -200,15 +200,15 @@ export function Publishedpap() {
               <CardContent >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div>John Doe</div>
+                    <div>Yogesh Das</div>
                     <div className="font-semibold text-lg">3,456</div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div>Jane Smith</div>
+                    <div>Leo Das</div>
                     <div className="font-semibold text-lg">2,789</div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div>Michael Johnson</div>
+                    <div>Antony Das</div>
                     <div className="font-semibold text-lg">1,987</div>
                   </div>
                 </div>
