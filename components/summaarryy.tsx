@@ -10,6 +10,8 @@ import { Button } from "./ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "./ui/card";
 import { Rank } from "./rank";
 import { Usernamespaper } from "./usernamespaper";
+import { SignOutButton } from "@clerk/nextjs";
+import { ArrowRight, LogOut, Power } from 'lucide-react'; 
 import {
   AlertDialog,
   AlertDialogAction,
@@ -48,6 +50,8 @@ export function Summaarryy() {
     { name: "2024", papers: 42, topics: ["Machine Learning", "Deep Learning"], title: "Future Directions in Machine Learning and Deep Learning" },
   ];
 
+  
+
   const handleAnalyze = () => {
     setLoading(true);
     setConfidenceLevel(Math.floor(Math.random() * 21) + 80); // Confidence level between 80% to 100%
@@ -78,9 +82,9 @@ export function Summaarryy() {
       let recommendation = "";
 
       if (relevantPapersCount > 0) {
-        recommendation = `Our AI, after thoroughly analyzing ${publications.length} publications, identifies that Dr. Jane Doe has a considerable focus on ${role}. With ${relevantPapersCount} papers directly relating to this domain, her research not only aligns with but also significantly contributes to the current discourse in this field. This pattern suggests a deep and sustained engagement with topics central to ${role}.`;
+        recommendation = `Our AI, after thoroughly analyzing ${publications.length} publications, identifies that ${userData.name} has a considerable focus on ${role}. With ${relevantPapersCount} papers directly relating to this domain, her research not only aligns with but also significantly contributes to the current discourse in this field. This pattern suggests a deep and sustained engagement with topics central to ${role}.`;
       } else {
-        recommendation = `The AI analysis reveals that Dr. Jane Doe does not appear to have published papers explicitly related to ${role}. However, the AI identified a substantial focus on other areas such as `;
+        recommendation = `The AI analysis reveals that ${userData.name} does not appear to have published papers explicitly related to ${role}. However, the AI identified a substantial focus on other areas such as `;
         sortedTopics.forEach(([topic], index) => {
           recommendation += `${topic}${index < sortedTopics.length - 1 ? ", " : "."}`;
         });
@@ -97,11 +101,19 @@ export function Summaarryy() {
 
   return (
     <div className="w-full max-w-7xl mx-auto py-16 px-8 md:px-12">
+       <div className="flex justify-end mb-4">
+      <SignOutButton>
+        <Button variant="outline">
+          <ArrowRight  className="mr-2" /> {/* Add icon before the text */}
+          Sign Out
+        </Button>
+      </SignOutButton>
+    </div>
       <div className="flex flex-col md:flex-row gap-8">
         <div className="flex-1">
           <div className="flex items-center gap-6 mb-8">
             <div className="flex-shrink-0 w-40 h-40 rounded-full bg-muted flex items-center justify-center text-7xl">
-              🧑‍🏫
+              🧑‍💻
             </div>
             <div className="flex flex-col justify-center">
               <h1 className="text-3xl font-bold">{userData.name}</h1>
@@ -210,84 +222,88 @@ export function Summaarryy() {
         </div>
       </div>
 
-     <div className="mt-16 space-y-4">
-  <h2 className="text-xl font-semibold">
-    What role are you looking for?
-  </h2>
-  <Input
-    type="text"
-    placeholder="Enter the role name..."
-    value={role}
-    onChange={(e) => setRole(e.target.value)}
-    className="w-full px-4 py-2 border rounded"
-  />
-  <div className="flex items-center space-x-2">
-    <Button
-      onClick={handleAnalyze}
-      variant="ghost"
-      className="px-4 py-2 text-white rounded"
-    >
-      Analyze
-    </Button>
-    <AlertDialog>
-      <AlertDialogTrigger>
-        <Button variant="ghost" className="px-4 py-2">Purpose of This?</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Purpose of This?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action will analyze the data for the specified role. It provides insights and relevant papers related to the role to help you make informed decisions.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Close</AlertDialogCancel>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  </div>
+      <div className="mt-16 space-y-4">
+        <h2 className="text-xl font-semibold">
+          What role are you looking for?
+        </h2>
+        <Input
+          type="text"
+          placeholder="Enter the role name..."
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          className="w-full px-4 py-2 border rounded"
+        />
+        <div className="flex items-center space-x-2">
+          <Button
+            onClick={handleAnalyze}
+            variant="ghost"
+            className="px-4 py-2 text-white rounded"
+          >
+            Analyze
+          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="ghost" className="px-4 py-2">
+                Purpose of This?
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Purpose of This?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action will analyze the data for the specified role. It
+                  provides insights and relevant papers related to the role to
+                  help you make informed decisions.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Close</AlertDialogCancel>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
 
-  {loading && (
-    <motion.div
-      className="mt-4 text-lg"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      Analyzing data, please wait...
-    </motion.div>
-  )}
-
-  {analysis && !loading && (
-    <Card className="hover:shadow-xl transition-shadow duration-300">
-      <CardHeader>
-        <CardTitle>Analysis Result</CardTitle>
-        <CardDescription className="text-lg font-medium">
-          {analysis}
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        {relevantPapers.length > 0 && (
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold mb-2">Sample Papers:</h3>
-            <ul className="list-disc ml-6 text-base">
-              {relevantPapers.slice(0, 4).map((paper, index) => (
-                <li key={index} className="text-lg text-gray-700 mb-2">
-                  {paper.title} - {paper.papers} papers on topics:{" "}
-                  {paper.topics.join(", ")}
-                </li>
-              ))}
-            </ul>
-          </div>
+        {loading && (
+          <motion.div
+            className="mt-4 text-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            Analyzing data, please wait...
+          </motion.div>
         )}
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">More Info</Button>
-        <Button variant="ghost">Save Result</Button>
-      </CardFooter>
-    </Card>
-  )}
-</div>
+
+        {analysis && !loading && (
+          <Card className="hover:shadow-xl transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle>Analysis Result</CardTitle>
+              <CardDescription className="text-lg font-medium">
+                {analysis}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {relevantPapers.length > 0 && (
+                <div className="mt-4">
+                  <h3 className="text-lg font-semibold mb-2">Sample Papers:</h3>
+                  <ul className="list-disc ml-6 text-base">
+                    {relevantPapers.slice(0, 4).map((paper, index) => (
+                      <li key={index} className="text-lg text-gray-700 mb-2">
+                        {paper.title} - {paper.papers} papers on topics:{" "}
+                        {paper.topics.join(", ")}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <Button variant="outline">More Info</Button>
+              <Button variant="ghost">Save Result</Button>
+            </CardFooter>
+          </Card>
+        )}
+      </div>
     </div>
   );
 }

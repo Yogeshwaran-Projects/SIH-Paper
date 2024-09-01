@@ -3,7 +3,8 @@ import Link from "next/link"
 import { useEffect,useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import FileUpload from "@/components/FileUpload";
+import Exceluploadb from "@/components/Exceluploadb";
+
 
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem } from "@/components/ui/dropdown-menu"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
@@ -94,13 +95,15 @@ export function Searchpap() {
   >
     <div className="flex items-center gap-10"> 
       <SearchIcon className="h-5 w-5 text-white" />
-      <FileUpload />
+      
     </div>
   </Button>
   
   </div>
 </form>
+<Exceluploadb />
         </div>
+        
       </header>
       <main className="flex-1 bg-background">
         <div className="container mx-auto py-8 px-6">

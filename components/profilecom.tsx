@@ -35,26 +35,16 @@ export function Profilecom() {
   const params = useParams(); // Access the params using useParams
   const userId = params.userId;
   const username = "SIH TEAM";
-
-  const router = useRouter(); // Define `router` once
-  function handleSearch() {
-    router.push(`/search`);
-  }
-
-  function handleProfile() {
-    // Corrected the function name from `handleProfie` to `handleProfile`
-    router.push(`/Summary`);
-  }
-
+ const router = useRouter();
   return (
+
     <div className="relative min-h-screen min-w-full py-12 px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1fr_300px_300px] gap-8">
       {/* Main Profile Section */}
       <div>
         <div className="flex items-center gap-4 mb-8 animate-fade-in">
-          <Avatar className="h-16 w-16">
-            <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
-            <AvatarFallback>JD</AvatarFallback>
-          </Avatar>
+          <div className="flex-shrink-0 w-20 h-20 rounded-full bg-muted flex items-center justify-center text-7xl">
+            🧑‍💻
+          </div>
           <div className="flex-1">
             <h1 className="text-2xl font-bold">{userData.name}</h1>
             <p className="text-muted-foreground">{userData.profession}</p>
@@ -103,12 +93,17 @@ export function Profilecom() {
               </SheetFooter>
             </SheetContent>
           </Sheet>
-          <Button variant="ghost">
-            <Search onClick={handleSearch} />
-          </Button>
-          <Button variant="ghost">
-            <User onClick={handleProfile} />
-          </Button>
+          <Link href="/search">
+            <Button variant="ghost">
+              <Search />
+            </Button>
+          </Link>
+
+          <Link href="/Summary">
+            <Button variant="ghost">
+              <User />
+            </Button>
+          </Link>
         </div>
 
         <div className="space-y-6">
@@ -454,22 +449,21 @@ export function Profilecom() {
 
       <div className="border border-border p-6 rounded-lg animate-fade-in-left shadow-lg">
         <div className="space-y-4">
-        <div
-  className="flex items-center justify-between cursor-pointer"
-  onClick={() => router.push("/readlater")}
->
-  <h2 className="text-lg font-semibold">Read Later</h2>
-  <span className="text-muted-foreground">45</span>
-</div>
-<div
-  className="flex items-center justify-between cursor-pointer"
-  onClick={() => router.push("/published")}
->
-  <h2 className="text-lg font-semibold">Publications</h2>
-  <span className="text-muted-foreground">12</span>
-</div>
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => router.push("/readlater")}
+          >
+            <h2 className="text-lg font-semibold">Read Later</h2>
+            <span className="text-muted-foreground">45</span>
+          </div>
+          <div
+            className="flex items-center justify-between cursor-pointer"
+            onClick={() => router.push("/published")}
+          >
+            <h2 className="text-lg font-semibold">Publications</h2>
+            <span className="text-muted-foreground">12</span>
+          </div>
 
-         
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">H-Index</h2>
             <span className="text-muted-foreground">27</span>

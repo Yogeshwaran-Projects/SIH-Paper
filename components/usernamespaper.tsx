@@ -1,15 +1,16 @@
-
 import { Card, CardHeader, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
+import { useUserContext } from "@/context/UserContext";
 
 export function Usernamespaper() {
+  const { userData } = useUserContext();
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader className="p-6 text-primary-foreground">
         <div className="flex items-center justify-between">
         <div className="flex flex-col items-start space-y-2">
-  <h2 className="text-2xl font-bold text-white">John Doe</h2>
+  <h2 className="text-2xl font-bold text-white">{userData.name}</h2>
   <h3 className="text-lg text-muted-foreground">Usernames across all the platform</h3>
 </div>
 
@@ -27,19 +28,19 @@ export function Usernamespaper() {
           <div className="grid gap-2 text-muted-foreground">
             <div className="flex items-center justify-between">
               <span>Google Scholar:</span>
-              <span>johndoe123</span>
+              <span>{userData.name}123</span>
             </div>
             <div className="flex items-center justify-between">
               <span>Web of Science:</span>
-              <span>john_doe</span>
+              <span>{userData.name}_wob</span>
             </div>
             <div className="flex items-center justify-between">
               <span>Scopus:</span>
-              <span>j.doe</span>
+              <span>{userData.name}_123</span>
             </div>
             <div className="flex items-center justify-between">
               <span>ResearchGate:</span>
-              <span>john-doe-123</span>
+              <span>{userData.name}-123</span>
             </div>
             <div className="flex items-center justify-between">
               <span>ORCID:</span>
@@ -47,7 +48,7 @@ export function Usernamespaper() {
             </div>
             <div className="flex items-center justify-between">
               <span>Publons:</span>
-              <span>john-d</span>
+              <span>{userData.name}_p</span>
             </div>
           </div>
         </div>

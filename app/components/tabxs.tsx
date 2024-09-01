@@ -18,27 +18,42 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { CheckCircle } from 'lucide-react'; // Updated import
 
 export function TabsDemo() {
-  const [activeTab, setActiveTab] = useState("wos");
-  const [wosEmail, setWosEmail] = useState("");
-  const [wosProfileLink, setWosProfileLink] = useState("");
-  const [googleScholarEmail, setGoogleScholarEmail] = useState("");
-  const [googleScholarProfileLink, setGoogleScholarProfileLink] = useState("");
+  const [activeTab, setActiveTab] = useState<string>("wos");
+  const [wosEmail, setWosEmail] = useState<string>("");
+  const [wosProfileLink, setWosProfileLink] = useState<string>("");
+  const [googleScholarEmail, setGoogleScholarEmail] = useState<string>("");
+  const [googleScholarProfileLink, setGoogleScholarProfileLink] = useState<string>("");
+  const [isRedirecting, setIsRedirecting] = useState<boolean>(false);
   const router = useRouter();
+
+  // Validate email format
+  const validateEmail = (email: string): boolean => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
 
   // Handle Save Changes for WOS tab (Switch to Scholar tab if valid)
   const handleSaveChanges = () => {
     if (wosEmail && wosProfileLink) {
       setActiveTab("scholar");
     } else {
-      alert("Please fill in all fields.");
+      toast.error('Please fill in all fields in the WOS tab.');
     }
   };
 
   // Handle form submission for Scholar tab
   const handleSubmit = async () => {
     if (googleScholarEmail && googleScholarProfileLink) {
+      if (!validateEmail(googleScholarEmail) || !validateEmail(wosEmail)) {
+        toast.error('Please enter valid email addresses.');
+        return;
+      }
+
       try {
         const response = await fetch("http://localhost:5003/api/saveUserData", {
           method: "POST",
@@ -55,18 +70,23 @@ export function TabsDemo() {
 
         const result = await response.json();
         if (result.success) {
-          alert("Submitted!");
-          // Redirect to user page displaying userId
-          router.push(`/detail/${result.userId}`);
+          toast.success('Submitted successfully! 🎉', {
+            icon: <CheckCircle className="h-6 w-6 text-green-500" />,
+            autoClose: 3000, // Duration in milliseconds
+          });
+          setIsRedirecting(true);
+          setTimeout(() => {
+            router.push(`/detail/${result.userId}`);
+          }, 3000); // Redirect after 3 seconds to allow toast to be visible
         } else {
-          alert("Failed to save user data");
+          toast.error('Failed to save user data');
         }
       } catch (error) {
         console.error("Error submitting form:", error);
-        alert("An error occurred while submitting the form");
+        toast.error('An error occurred while submitting the form');
       }
     } else {
-      alert("Please fill in all fields.");
+      toast.error('Please fill in all fields in the Scholar tab.');
     }
   };
 
@@ -151,6 +171,7 @@ export function TabsDemo() {
           </Card>
         </TabsContent>
       </Tabs>
+      <ToastContainer />
     </div>
   );
 }

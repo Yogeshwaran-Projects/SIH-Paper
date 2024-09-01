@@ -77,10 +77,9 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
     <><div className="container mx-auto px-4 md:px-6 py-12">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           <div className="fixed top-1/2 left-0 transform -translate-y-1/2 p-4 flex flex-col items-center md:items-start gap-4">
-            <Avatar className="w-32 h-32">
-              <AvatarImage src="/placeholder-user.jpg" alt="User Avatar" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
+          <div className="flex-shrink-0 w-20 h-20 rounded-full bg-muted flex items-center justify-center text-7xl">
+            🧑‍💻
+            </div>
             <div className="text-center md:text-left">
               <h1 className="text-3xl font-bold">{userData.name}</h1>
               <p className="text-muted-foreground text-lg">User ID: {userData.id}</p>
@@ -110,7 +109,21 @@ const applyFilterAndSort = (sortOrder: "latest" | "oldest", startYear: number | 
           <DropdownMenuCheckboxItem>Book Chapters</DropdownMenuCheckboxItem>
         </DropdownMenuContent>
       </DropdownMenu>
-
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="flex items-center gap-2">
+            <Globe className="h-5 w-5" />
+            Scopus
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start" sideOffset={8}>
+          <DropdownMenuLabel>Filter by Scopus:</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuCheckboxItem>Journal Articles</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>Conference Papers</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>Book Chapters</DropdownMenuCheckboxItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
       {/* Filter by Google Scholar */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

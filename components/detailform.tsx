@@ -54,7 +54,7 @@ export function Detailform() {
                   value={form.name}
                   onChange={handleChange} 
                   autoComplete="name" 
-                  placeholder="John Doe" 
+                  placeholder="Leo Das" 
                   required 
                 />
               </div>
