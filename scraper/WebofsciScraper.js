@@ -10,9 +10,11 @@ const apiKey = '77178473434ebfb7bd93704f57f53fc59dfd3b1f';
 const extractIdentifier = (profileLink) => {
   const parts = profileLink.split('/');
   return parts.pop(); 
+
 };
 
 const sleep = (milliseconds) => {
+  console.log("");
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
 
