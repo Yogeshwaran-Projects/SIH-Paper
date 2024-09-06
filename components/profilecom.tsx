@@ -29,6 +29,7 @@ import { Label } from "@/components/ui/label";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ModeToggle } from "@/app/components/themetoggle";
 
 export function Profilecom() {
   const { userData } = useUserContext();
@@ -37,7 +38,8 @@ export function Profilecom() {
   const username = "SIH TEAM";
  const router = useRouter();
   return (
-
+    <>
+    <ModeToggle />
     <div className="relative min-h-screen min-w-full py-12 px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1fr_300px_300px] gap-8">
       {/* Main Profile Section */}
       <div>
@@ -50,7 +52,7 @@ export function Profilecom() {
             <p className="text-muted-foreground">{userData.profession}</p>
           </div>
           {/* Sheet Trigger Button near Profile Name */}
-
+          
           <Sheet>
             <SheetTrigger asChild>
               <Button variant={"ghost"}>Unique ID</Button>
@@ -535,5 +537,6 @@ export function Profilecom() {
         </div>
       </div>
     </div>
+    </>
   );
 }

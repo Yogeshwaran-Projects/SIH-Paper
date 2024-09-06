@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import { SVGProps } from "react"
+import { ModeToggle } from "@/app/components/themetoggle"
 
 
 
@@ -29,6 +30,8 @@ function FilterIcon(props: SVGProps<SVGSVGElement>) {
 
 export function Publishedpap() {
   return (
+    <>
+    <ModeToggle />
     <main className="flex-1  py-10 md:py-16 lg:py-20">
       <div className="container px-6 md:px-8">
         <div className="flex items-center justify-between mb-8 md:mb-10 lg:mb-12">
@@ -249,5 +252,6 @@ export function Publishedpap() {
         </div>
       </div>
     </main>
+    </>
   )
 }

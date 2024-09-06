@@ -7,7 +7,7 @@ const dataDir = path.join(__dirname, '../data/');
 const outputFile = path.join(dataDir, 'scopusData.json');
 
 // Scopus API configuration
-const apiKey = '5003e176966b0595b5af4f53ccb381b0'; // Your Scopus API key
+const apiKey = 'e0e1e386d41086b08ed1ae07c4619791'; // Your Scopus API key
 const scopusBaseUrl = 'https://api.elsevier.com/content/search/scopus';
 
 // Function to extract authorId from Scopus URL

@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { SVGProps } from 'react';
+import { ModeToggle } from "@/app/components/themetoggle";
 
 // GlobeIcon Component
 function GlobeIcon(props: SVGProps<SVGSVGElement>) {
@@ -144,6 +145,9 @@ export function Summaarryy() {
   };
 
   return (
+    <>
+    <ModeToggle />
+   
     <div className="w-full max-w-7xl mx-auto py-16 px-8 md:px-12">
        <div className="flex justify-end mb-4">
       <SignOutButton>
@@ -349,5 +353,6 @@ export function Summaarryy() {
         )}
       </div>
     </div>
+    </>
   );
 }

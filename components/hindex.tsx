@@ -2,11 +2,14 @@
 import { Separator } from "@/components/ui/separator"
 import { useRouter } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
+import { ModeToggle } from "@/app/components/themetoggle";
 
 export function Hindex() {
   const router = useRouter();
 
   return (
+    <>
+    <ModeToggle />
     <div className="flex flex-col items-center justify-center min-h-screen bg-background relative">
       <div className="absolute top-4 left-4">
         <ArrowLeft 
@@ -66,5 +69,6 @@ export function Hindex() {
         </div>
       </div>
     </div>
+    </>
   )
 }

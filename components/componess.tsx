@@ -1,9 +1,12 @@
 
+import { ModeToggle } from "@/app/components/themetoggle"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Link from "next/link"
 
 export function Componess() {
   return (
+    <>
+    <ModeToggle />
     <div className="container mx-auto py-12 px-4 md:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8">
       <div>
         <div className="flex items-center gap-4 mb-8">
@@ -91,5 +94,6 @@ export function Componess() {
         </div>
       </div>
     </div>
+    </>
   )
 }

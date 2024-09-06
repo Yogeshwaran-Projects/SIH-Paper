@@ -1,0 +1,926 @@
+{
+  "search-results": {
+    "opensearch:totalResults": "15",
+    "opensearch:startIndex": "0",
+    "opensearch:itemsPerPage": "15",
+    "opensearch:Query": {
+      "@role": "request",
+      "@searchTerms": "AU-ID(57211662543)",
+      "@startPage": "0"
+    },
+    "link": [
+      {
+        "@_fa": "true",
+        "@ref": "self",
+        "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=25&query=AU-ID%2857211662543%29&apiKey=e0e1e386d41086b08ed1ae07c4619791",
+        "@type": "application/json"
+      },
+      {
+        "@_fa": "true",
+        "@ref": "first",
+        "@href": "https://api.elsevier.com/content/search/scopus?start=0&count=25&query=AU-ID%2857211662543%29&apiKey=e0e1e386d41086b08ed1ae07c4619791",
+        "@type": "application/json"
+      }
+    ],
+    "entry": [
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85191834445"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85191834445?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85191834445&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85191834445&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85191834445",
+        "dc:identifier": "SCOPUS_ID:85191834445",
+        "eid": "2-s2.0-85191834445",
+        "dc:title": "Thermal Efficiency Investigation of a Solar Parabolic Trough Collector System Using Two Dissimilar Reflectors",
+        "dc:creator": "Vijayan S.N.",
+        "prism:publicationName": "The Internet of Energy: A Pragmatic Approach Towards Sustainable Development",
+        "prism:isbn": [
+          {
+            "@_fa": "true",
+            "$": "[9781000891997, 9781774914182]"
+          }
+        ],
+        "prism:pageRange": "21-36",
+        "prism:coverDate": "2024-01-01",
+        "prism:coverDisplayDate": "1 January 2024",
+        "prism:doi": "10.1201/9781003399827-2",
+        "citedby-count": "0",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Karpagam Institute of Technology",
+            "affiliation-city": "Coimbatore",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Book",
+        "subtype": "ch",
+        "subtypeDescription": "Book Chapter",
+        "source-id": "21101218199",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85146650951"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85146650951?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85146650951&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85146650951&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85146650951",
+        "dc:identifier": "SCOPUS_ID:85146650951",
+        "eid": "2-s2.0-85146650951",
+        "dc:title": "Compendious Characterization Studies on the Physio Mechanical Behaviour of Habara Plant Fiber Fortified Epoxy Composites",
+        "dc:creator": "Karthi S.",
+        "prism:publicationName": "SAE Technical Papers",
+        "prism:eIssn": "01487191",
+        "prism:pageRange": null,
+        "prism:coverDate": "2022-12-23",
+        "prism:coverDisplayDate": "23 December 2022",
+        "prism:doi": "10.4271/2022-28-0538",
+        "citedby-count": "6",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology",
+            "affiliation-city": "Krishna",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Conference Proceeding",
+        "subtype": "cp",
+        "subtypeDescription": "Conference Paper",
+        "source-id": "21100239259",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85142387482"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85142387482?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85142387482&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85142387482&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85142387482",
+        "dc:identifier": "SCOPUS_ID:85142387482",
+        "eid": "2-s2.0-85142387482",
+        "dc:title": "Numerical analysis of impact behaviour of LM26/ZrB<inf>2</inf>composite using finite element method",
+        "dc:creator": "Vijayan S.N.",
+        "prism:publicationName": "AIP Conference Proceedings",
+        "prism:issn": "0094243X",
+        "prism:eIssn": "15517616",
+        "prism:isbn": [
+          {
+            "@_fa": "true",
+            "$": "[9780735442023]"
+          }
+        ],
+        "prism:volume": "2527",
+        "prism:pageRange": null,
+        "prism:coverDate": "2022-10-14",
+        "prism:coverDisplayDate": "14 October 2022",
+        "prism:doi": "10.1063/5.0108205",
+        "citedby-count": "0",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Karpagam Institute of Technology",
+            "affiliation-city": "Coimbatore",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Conference Proceeding",
+        "subtype": "cp",
+        "subtypeDescription": "Conference Paper",
+        "article-number": "020007",
+        "source-id": "26916",
+        "openaccess": "1",
+        "openaccessFlag": true,
+        "freetoread": {
+          "value": [
+            {
+              "$": "all"
+            },
+            {
+              "$": "publisherfree2read"
+            }
+          ]
+        },
+        "freetoreadLabel": {
+          "value": [
+            {
+              "$": "All Open Access"
+            },
+            {
+              "$": "Bronze"
+            }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85122784795"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85122784795?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85122784795&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85122784795&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85122784795",
+        "dc:identifier": "SCOPUS_ID:85122784795",
+        "eid": "2-s2.0-85122784795",
+        "dc:title": "Evaluation of Microstructures, Mechanical and Dry-Sliding Wear Performance of A356-(Fly Ash/SiCp) Hybrid Composites",
+        "dc:creator": "Soundararajan R.",
+        "prism:publicationName": "International Journal of Metalcasting",
+        "prism:issn": "19395981",
+        "prism:eIssn": "21633193",
+        "prism:volume": "16",
+        "prism:issueIdentifier": "4",
+        "prism:pageRange": "2079-2096",
+        "prism:coverDate": "2022-10-01",
+        "prism:coverDisplayDate": "October 2022",
+        "prism:doi": "10.1007/s40962-021-00731-3",
+        "citedby-count": "15",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology, Coimbatore",
+            "affiliation-city": "Coimbatore",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Journal",
+        "subtype": "ar",
+        "subtypeDescription": "Article",
+        "source-id": "21100198509",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85131719046"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85131719046?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85131719046&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85131719046&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85131719046",
+        "dc:identifier": "SCOPUS_ID:85131719046",
+        "eid": "2-s2.0-85131719046",
+        "dc:title": "UNRAVELLING THE TRIBOLOGICAL BEHAVIOUR OF MERCERIZED COCONUT INFLORESCENCE FIBER FORTIFIED UNSATURATED POLYESTER COMPOSITES",
+        "dc:creator": "Soundarrajan K.",
+        "prism:publicationName": "Materiali in Tehnologije",
+        "prism:issn": "15802949",
+        "prism:eIssn": "15803414",
+        "prism:volume": "56",
+        "prism:issueIdentifier": "3",
+        "prism:pageRange": "271-277",
+        "prism:coverDate": "2022-01-01",
+        "prism:coverDisplayDate": "2022",
+        "prism:doi": "10.17222/mit.2022.410",
+        "citedby-count": "3",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology, Coimbatore",
+            "affiliation-city": "Coimbatore",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Journal",
+        "subtype": "ar",
+        "subtypeDescription": "Article",
+        "source-id": "5700191216",
+        "openaccess": "1",
+        "openaccessFlag": true,
+        "freetoread": {
+          "value": [
+            {
+              "$": "all"
+            },
+            {
+              "$": "publisherfullgold"
+            }
+          ]
+        },
+        "freetoreadLabel": {
+          "value": [
+            {
+              "$": "All Open Access"
+            },
+            {
+              "$": "Gold"
+            }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85118661533"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85118661533?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85118661533&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85118661533&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85118661533",
+        "dc:identifier": "SCOPUS_ID:85118661533",
+        "eid": "2-s2.0-85118661533",
+        "dc:title": "Physio - Mechanical and Chemical Behaviour of Surface Modified Coconut Inflorescence Fiber",
+        "dc:creator": "Soundarrajan K.",
+        "prism:publicationName": "SAE Technical Papers",
+        "prism:eIssn": "01487191",
+        "prism:volume": "Part 173236",
+        "prism:issueIdentifier": "2021",
+        "prism:pageRange": null,
+        "prism:coverDate": "2021-10-01",
+        "prism:coverDisplayDate": "1 October 2021",
+        "prism:doi": "10.4271/2021-28-0275",
+        "citedby-count": "9",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology",
+            "affiliation-city": "Krishna",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Conference Proceeding",
+        "subtype": "cp",
+        "subtypeDescription": "Conference Paper",
+        "source-id": "21100239259",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85118645315"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85118645315?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85118645315&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85118645315&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85118645315",
+        "dc:identifier": "SCOPUS_ID:85118645315",
+        "eid": "2-s2.0-85118645315",
+        "dc:title": "Effect of Various Synthetic and Natural Fibers for the Production of Copper-Free Automotive Brake Pads",
+        "dc:creator": "Soundararajan R.",
+        "prism:publicationName": "SAE Technical Papers",
+        "prism:eIssn": "01487191",
+        "prism:volume": "Part 173236",
+        "prism:issueIdentifier": "2021",
+        "prism:pageRange": null,
+        "prism:coverDate": "2021-10-01",
+        "prism:coverDisplayDate": "1 October 2021",
+        "prism:doi": "10.4271/2021-28-0274",
+        "citedby-count": "6",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology",
+            "affiliation-city": "Krishna",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Conference Proceeding",
+        "subtype": "cp",
+        "subtypeDescription": "Conference Paper",
+        "source-id": "21100239259",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85099599281"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85099599281?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85099599281&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85099599281&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85099599281",
+        "dc:identifier": "SCOPUS_ID:85099599281",
+        "eid": "2-s2.0-85099599281",
+        "dc:title": "Optimization on the dry sliding wear behaviour of mercerized coconut inflorescence fibril fortified unsaturated polyester composites",
+        "dc:creator": "Karthik S.",
+        "prism:publicationName": "IOP Conference Series: Materials Science and Engineering",
+        "prism:issn": "17578981",
+        "prism:eIssn": "1757899X",
+        "prism:volume": "993",
+        "prism:issueIdentifier": "1",
+        "prism:pageRange": null,
+        "prism:coverDate": "2020-12-30",
+        "prism:coverDisplayDate": "30 December 2020",
+        "prism:doi": "10.1088/1757-899X/993/1/012136",
+        "citedby-count": "2",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology, Coimbatore",
+            "affiliation-city": "Coimbatore",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Conference Proceeding",
+        "subtype": "cp",
+        "subtypeDescription": "Conference Paper",
+        "article-number": "012136",
+        "source-id": "19700200831",
+        "openaccess": "1",
+        "openaccessFlag": true,
+        "freetoread": {
+          "value": [
+            {
+              "$": "all"
+            },
+            {
+              "$": "publisherfree2read"
+            }
+          ]
+        },
+        "freetoreadLabel": {
+          "value": [
+            {
+              "$": "All Open Access"
+            },
+            {
+              "$": "Bronze"
+            }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85093845549"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85093845549?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85093845549&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85093845549&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85093845549",
+        "dc:identifier": "SCOPUS_ID:85093845549",
+        "eid": "2-s2.0-85093845549",
+        "dc:title": "Investigation of Hybrid Polyamide Composites for Replacement of Metallic Parts",
+        "dc:creator": "Gopal S.",
+        "prism:publicationName": "SAE Technical Papers",
+        "prism:eIssn": "01487191",
+        "prism:issueIdentifier": "2020",
+        "prism:pageRange": null,
+        "prism:coverDate": "2020-09-25",
+        "prism:coverDisplayDate": "25 September 2020",
+        "prism:doi": "10.4271/2020-28-0423",
+        "citedby-count": "0",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology",
+            "affiliation-city": "Kuniyamuthur",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Journal",
+        "subtype": "cp",
+        "subtypeDescription": "Conference Paper",
+        "source-id": "21100239259",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85081742964"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85081742964?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85081742964&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85081742964&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85081742964",
+        "dc:identifier": "SCOPUS_ID:85081742964",
+        "eid": "2-s2.0-85081742964",
+        "dc:title": "Investigation on the tensile and flexural behavior of coconut inflorescence fiber reinforced unsaturated polyester resin composites",
+        "dc:creator": "Karthik S.",
+        "prism:publicationName": "Materials Research Express",
+        "prism:eIssn": "20531591",
+        "prism:volume": "7",
+        "prism:issueIdentifier": "1",
+        "prism:pageRange": null,
+        "prism:coverDate": "2020-01-01",
+        "prism:coverDisplayDate": "2020",
+        "prism:doi": "10.1088/2053-1591/ab6c9d",
+        "citedby-count": "18",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology, Coimbatore",
+            "affiliation-city": "Coimbatore",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Journal",
+        "subtype": "ar",
+        "subtypeDescription": "Article",
+        "article-number": "015345",
+        "source-id": "21100432452",
+        "openaccess": "1",
+        "openaccessFlag": true,
+        "freetoread": {
+          "value": [
+            {
+              "$": "all"
+            },
+            {
+              "$": "publisherfullgold"
+            }
+          ]
+        },
+        "freetoreadLabel": {
+          "value": [
+            {
+              "$": "All Open Access"
+            },
+            {
+              "$": "Gold"
+            }
+          ]
+        }
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85074783973"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85074783973?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85074783973&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85074783973&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85074783973",
+        "dc:identifier": "SCOPUS_ID:85074783973",
+        "eid": "2-s2.0-85074783973",
+        "dc:title": "Design and Analysis of Hybrid Metal Matrix Composite Connecting Rod via Stir/Squeeze Casting Route",
+        "dc:creator": "Ranganathan S.",
+        "prism:publicationName": "SAE Technical Papers",
+        "prism:eIssn": "01487191",
+        "prism:issueIdentifier": "October",
+        "prism:pageRange": null,
+        "prism:coverDate": "2019-10-11",
+        "prism:coverDisplayDate": "11 October 2019",
+        "prism:doi": "10.4271/2019-28-0113",
+        "citedby-count": "4",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology",
+            "affiliation-city": "Kuniyamuthur",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Journal",
+        "subtype": "cp",
+        "subtypeDescription": "Conference Paper",
+        "source-id": "21100239259",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85054020272"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/85054020272?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85054020272&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=85054020272&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/85054020272",
+        "dc:identifier": "SCOPUS_ID:85054020272",
+        "eid": "2-s2.0-85054020272",
+        "dc:title": "Automotive brake pad by using functionally graded hybrid composites and their behaviour",
+        "dc:creator": "Soundararajan R.",
+        "prism:publicationName": "International Journal of Mechanical Engineering and Technology",
+        "prism:issn": "09766340",
+        "prism:eIssn": "09766359",
+        "prism:volume": "9",
+        "prism:issueIdentifier": "9",
+        "prism:pageRange": "318-328",
+        "prism:coverDate": "2018-09-01",
+        "prism:coverDisplayDate": "September 2018",
+        "citedby-count": "6",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Krishna College of Engineering and Technology, Coimbatore",
+            "affiliation-city": "Coimbatore",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Journal",
+        "subtype": "ar",
+        "subtypeDescription": "Article",
+        "source-id": "21100808402",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/84899937862"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/84899937862?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=84899937862&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=84899937862&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "full-text",
+            "@href": "https://api.elsevier.com/content/article/eid/1-s2.0-S0261306914002544"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/84899937862",
+        "dc:identifier": "SCOPUS_ID:84899937862",
+        "eid": "2-s2.0-84899937862",
+        "dc:title": "Determination of mechanical properties of intra-layer abaca-jute-glass fiber reinforced composite",
+        "dc:creator": "Vijaya Ramnath B.",
+        "prism:publicationName": "Materials and Design",
+        "prism:issn": "02641275",
+        "prism:eIssn": "18734197",
+        "prism:volume": "60",
+        "prism:pageRange": "643-652",
+        "prism:coverDate": "2014-01-01",
+        "prism:coverDisplayDate": "August 2014",
+        "prism:doi": "10.1016/j.matdes.2014.03.061",
+        "pii": "S0261306914002544",
+        "citedby-count": "165",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Sairam Engineering College, Chennai",
+            "affiliation-city": "Chennai",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Journal",
+        "subtype": "ar",
+        "subtypeDescription": "Article",
+        "source-id": "17797",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/84896359806"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/84896359806?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=84896359806&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=84896359806&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/84896359806",
+        "dc:identifier": "SCOPUS_ID:84896359806",
+        "eid": "2-s2.0-84896359806",
+        "dc:title": "Evaluation of the flexural properties of pineapple reinforced polymer composite for automotive and electrical applications",
+        "dc:creator": "Ramnath B.V.",
+        "prism:publicationName": "Advanced Materials Research",
+        "prism:issn": "10226680",
+        "prism:isbn": [
+          {
+            "@_fa": "true",
+            "$": "[9783038350255]"
+          }
+        ],
+        "prism:volume": "893",
+        "prism:pageRange": "271-274",
+        "prism:coverDate": "2014-01-01",
+        "prism:coverDisplayDate": "2014",
+        "prism:doi": "10.4028/www.scientific.net/AMR.893.271",
+        "citedby-count": "12",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Sri Sairam Engineering College, Chennai",
+            "affiliation-city": "Chennai",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Book Series",
+        "subtype": "cp",
+        "subtypeDescription": "Conference Paper",
+        "source-id": "4700151906",
+        "openaccess": "0",
+        "openaccessFlag": false
+      },
+      {
+        "@_fa": "true",
+        "link": [
+          {
+            "@_fa": "true",
+            "@ref": "self",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/84874102062"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "author-affiliation",
+            "@href": "https://api.elsevier.com/content/abstract/scopus_id/84874102062?field=author,affiliation"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus",
+            "@href": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=84874102062&origin=inward"
+          },
+          {
+            "@_fa": "true",
+            "@ref": "scopus-citedby",
+            "@href": "https://www.scopus.com/inward/citedby.uri?partnerID=HzOxMe3b&scp=84874102062&origin=inward"
+          }
+        ],
+        "prism:url": "https://api.elsevier.com/content/abstract/scopus_id/84874102062",
+        "dc:identifier": "SCOPUS_ID:84874102062",
+        "eid": "2-s2.0-84874102062",
+        "dc:title": "Strength and Durability Properties of Quaternary Cement Concrete Made with Fly Ash, Rice Husk Ash and Limestone Powder",
+        "dc:creator": "Kathirvel P.",
+        "prism:publicationName": "Arabian Journal for Science and Engineering",
+        "prism:issn": "2193567X",
+        "prism:eIssn": "21914281",
+        "prism:volume": "38",
+        "prism:issueIdentifier": "3",
+        "prism:pageRange": "589-598",
+        "prism:coverDate": "2013-03-01",
+        "prism:coverDisplayDate": "March 2013",
+        "prism:doi": "10.1007/s13369-012-0331-1",
+        "citedby-count": "60",
+        "affiliation": [
+          {
+            "@_fa": "true",
+            "affilname": "Kamaraj College of Engineering and Technology",
+            "affiliation-city": "Vellakulam",
+            "affiliation-country": "India"
+          }
+        ],
+        "prism:aggregationType": "Journal",
+        "subtype": "ar",
+        "subtypeDescription": "Article",
+        "source-id": "13951",
+        "openaccess": "0",
+        "openaccessFlag": false
+      }
+    ]
+  }
+}

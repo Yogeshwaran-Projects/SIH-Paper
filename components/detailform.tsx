@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { ModeToggle } from "@/app/components/themetoggle";
 
 export function Detailform() {
   const params = useParams();
@@ -36,6 +37,8 @@ export function Detailform() {
   };
 
   return (
+    <>
+    
     <div className="flex justify-center items-center min-h-screen px-4">
       <div className="w-full max-w-4xl py-16 space-y-8 rounded-lg shadow-xl">
         <div className="text-center">
@@ -133,5 +136,6 @@ export function Detailform() {
         </form>
       </div>
     </div>
+    </>
   );
 }

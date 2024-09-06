@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import LoadingComponent from './LoadingComponent';
+import { ModeToggle } from '@/app/components/themetoggle';
 
 // Define the interface for data items
 interface DataItem {
@@ -105,6 +106,8 @@ export function Excelupload() {
     };
 
     return (
+        <>
+        <ModeToggle />
         <div className="flex items-center justify-center min-h-screen">
             {showLoadingScreen ? (
                 <LoadingComponent /> // Show loading screen
@@ -158,6 +161,7 @@ export function Excelupload() {
                 </Card>
             )}
         </div>
+        </>
     );
 }
 

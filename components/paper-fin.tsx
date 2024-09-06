@@ -21,6 +21,7 @@ import { DatePickerWithRange } from "./ui/date-picker-with-range"
 import ExcelWos from '../Export/ExcelWos';
 import WordWos from '../Export/WordWos';
 import { Globe, BookOpen } from "lucide-react";
+import { ModeToggle } from "@/app/components/themetoggle";
 
 export function PaperFin() {
   const { userData } = useUserContext();
@@ -200,7 +201,10 @@ const normalizeScopusData = (item) => {
   };
 
   return (
-    <><div className="container mx-auto px-4 md:px-6 py-12">
+    <>
+
+    <ModeToggle />
+    <div className="container mx-auto px-4 md:px-6 py-12">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           <div className="fixed top-1/2 left-0 transform -translate-y-1/2 p-4 flex flex-col items-center md:items-start gap-4">
           <div className="flex-shrink-0 w-20 h-20 rounded-full bg-muted flex items-center justify-center text-7xl">

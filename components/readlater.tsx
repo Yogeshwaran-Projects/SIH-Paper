@@ -4,6 +4,7 @@ import { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
+import { ModeToggle } from "@/app/components/themetoggle"
 
 export function Readlater() {
   const [papers, setPapers] = useState([
@@ -135,6 +136,8 @@ export function Readlater() {
   }
 
   return (
+    <>
+    <ModeToggle />
     <div className="flex h-full w-full">
       <main className="flex-1 p-8">
         <div className="mb-8 flex items-center justify-between">
@@ -209,5 +212,6 @@ export function Readlater() {
         </div>
       </aside>
     </div>
+    </>
   )
 }

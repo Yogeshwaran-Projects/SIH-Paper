@@ -21,6 +21,7 @@ import {
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CheckCircle } from 'lucide-react'; // Updated import
+import { ModeToggle } from "./themetoggle";
 
 export function TabsDemo() {
   const [activeTab, setActiveTab] = useState<string>("wos");
@@ -91,6 +92,8 @@ export function TabsDemo() {
   };
 
   return (
+    <>
+
     <div className="flex justify-center items-center h-screen">
       <Tabs
         value={activeTab}
@@ -173,5 +176,6 @@ export function TabsDemo() {
       </Tabs>
       <ToastContainer />
     </div>
+    </>
   );
 }

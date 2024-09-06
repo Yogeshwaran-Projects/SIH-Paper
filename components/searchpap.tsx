@@ -10,6 +10,7 @@ import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, Pagi
 import { Globe } from "lucide-react";
 import { BookOpen } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import { ModeToggle } from "@/app/components/themetoggle"
 
 export function Searchpap() {
   const [data, setData] = useState([]);
@@ -91,6 +92,8 @@ export function Searchpap() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
+    <ModeToggle />
     <div className="flex flex-col min-h-[100dvh]">
       <header className="py-4 px-6">
         <div className="container mx-auto flex items-center justify-between">
@@ -275,6 +278,7 @@ export function Searchpap() {
         </div>
       </main>
     </div>
+    </>
   );
 }
 
