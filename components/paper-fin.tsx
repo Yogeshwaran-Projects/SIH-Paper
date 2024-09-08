@@ -22,17 +22,18 @@ import ExcelWos from '../Export/ExcelWos';
 import WordWos from '../Export/WordWos';
 import { Globe, BookOpen } from "lucide-react";
 import { ModeToggle } from "@/app/components/themetoggle";
+import { start } from "repl";
 
 export function PaperFin() {
-  const { userData } = useUserContext();
+  const { userData,StartYear,EndYear } = useUserContext();
   const [gsdata, setgsData] = useState([]);
   const [wosdata, setwosData] = useState([]);
   const [scopusdata, scopussetData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [sortBy, setSortBy] = useState("date")
   const [selectedSource, setselectedSource] = useState("wos")
-  const [startYear, setStartYear] = useState<number | undefined>(undefined)
-  const [endYear, setEndYear] = useState<number | undefined>(undefined)
+  const [startYear, setStartYear] = useState<number | undefined>(StartYear);
+  const [endYear, setEndYear] = useState<number | undefined>(EndYear);
   const [yearDropdownOpen, setYearDropdownOpen] = useState(false)
   const currentYear = new Date().getFullYear()
 
