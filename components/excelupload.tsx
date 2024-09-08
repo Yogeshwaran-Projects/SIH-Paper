@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import LoadingComponent from './LoadingComponent';
 import { ModeToggle } from '@/app/components/themetoggle';
+import { useUserContext } from "@/context/UserContext";
 
 // Define the interface for data items
 interface DataItem {
@@ -18,6 +19,7 @@ interface DataItem {
 }
 
 export function Excelupload() {
+    const { setStartYear,setEndYear } = useUserContext();
     const [data, setData] = useState<DataItem[]>([]);
     const [selectedName, setSelectedName] = useState<string>('');
     const [options, setOptions] = useState<string[]>([]);
@@ -64,6 +66,8 @@ export function Excelupload() {
             if (selectedData) {
                 try {
                     // Send Google Scholar URL
+                    setStartYear(selectedData.start_year?selectedData.start_year:undefined);
+                    setEndYear(selectedData.end_year?selectedData.end_year:undefined);
                     await fetch('http://localhost:5003');
                     await fetch('http://localhost:5003/api/scrape/googlescholar', {
                         method: 'POST',

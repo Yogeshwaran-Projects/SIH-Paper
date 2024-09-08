@@ -15,8 +15,11 @@ export const UserProvider = ({ children }) => {
     id: "",
   });
 
+  const [StartYear, setStartYear] = useState(undefined);
+  const [EndYear, setEndYear] = useState(undefined);
+
   return (
-    <UserContext.Provider value={{ userData, setUserData }}>
+    <UserContext.Provider value={{ userData, setUserData , StartYear,EndYear,setEndYear,setStartYear}}>
       {children}
     </UserContext.Provider>
   );
